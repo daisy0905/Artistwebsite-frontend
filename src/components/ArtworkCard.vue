@@ -136,13 +136,11 @@ import axios from 'axios'
         width: 80%;
         height: 5vh;
         font-weight: bold; 
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         margin-bottom: 0.5em;
     }
 
     h4 { 
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         margin: 0 0.5em 0 0.5em;
         font-weight: normal;
@@ -150,7 +148,6 @@ import axios from 'axios'
 
     p {
         margin: 0.5em;
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         text-align: center;
         background-color: grey;
@@ -279,19 +276,20 @@ import axios from 'axios'
         top: 0;
         left: 0vw;
 
-        h4 {
+        h3 {
             width: 90%;
             padding: 0;
+            font-size: 1.2rem;
         }
 
             
         h4 {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         p {
             width: 50%;
-            font-size: 1.5rem;
+            font-size: 1rem;
             margin: 0;
         }
     }
@@ -308,8 +306,8 @@ import axios from 'axios'
         row-gap: 2em;
 
         img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             filter: grayscale(80%);
         
         }

@@ -100,7 +100,6 @@ export default {
 
     h4 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 0.8rem;
       margin: 0.5em;
       text-align: left;
@@ -131,7 +130,6 @@ export default {
 
     .address {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 0.8rem;
       line-height: 1.5em;
       margin: 0.5em;
@@ -141,7 +139,6 @@ export default {
 
 p {
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   text-align: center;
   border-bottom: 1px solid white;
@@ -162,7 +159,6 @@ p {
   background-color: black;
 
   h4 {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
     color: grey;
     font-weight: normal;
@@ -228,17 +224,17 @@ p {
 
 @media only screen and (min-width: 1024px) {
   #footer {
-    height: 32vh;
+    height: 35vh;
   }
 
   #container-1 {
-    height: 20vh;
+    height: 25vh;
     grid-template-columns: 100%;
   }
 
   #unit-1 {
     grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 1em;
+    margin-top: 0.5em;
 
     .item {
       justify-items: center;
@@ -247,12 +243,12 @@ p {
       margin-left: 2em;
 
       img {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
       }
 
       h4 {
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-align: center;
       }
     }
@@ -265,28 +261,30 @@ p {
     .item-2 {
       justify-items: center;
       align-items: start;
-      margin: 0.5em;
+      margin: 1em;
 
       img {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
       }
 
       .address {
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 0;
+        margin-top: 0.5em;
       }
     }
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
+    padding: 1.5em;
   }
 
   #container-2 {
     h4 {
-      font-size: 1.2rem;
+      font-size: 0.8rem;
     }
   }
 }

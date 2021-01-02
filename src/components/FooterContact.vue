@@ -37,7 +37,6 @@ export default {};
   background-color: black;
 
   h4 {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
     color: grey;
     font-weight: normal;
@@ -52,10 +51,10 @@ export default {};
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1024px) {
     #container {
         h4 {
-        font-size: 1.2rem;
+        font-size: 0.8rem;
         }
     }
 }

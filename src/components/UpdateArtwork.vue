@@ -1,26 +1,53 @@
 <template>
   <div id="upload">
     <div class="upload-form">
-      <h3><span v-if="this.$store.getters.languageGet">名称</span><span v-else>Name</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">名称</span
+        ><span v-else>Name</span>
+      </h3>
       <input type="text" class="input" v-model="name" />
-      <h3><span v-if="this.$store.getters.languageGet">长</span><span v-else>Length</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">长</span
+        ><span v-else>Length</span>
+      </h3>
       <input type="text" class="input" v-model="length" />
-      <h3><span v-if="this.$store.getters.languageGet">宽</span><span v-else>Width</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">宽</span
+        ><span v-else>Width</span>
+      </h3>
       <input type="text" class="input" v-model="width" />
-      <h3><span v-if="this.$store.getters.languageGet">完成年份</span><span v-else>Completed at</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">完成年份</span
+        ><span v-else>Completed at</span>
+      </h3>
       <input type="text" class="input" v-model="completed_at" />
-      <h3><span v-if="this.$store.getters.languageGet">材料</span><span v-else>Material</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">材料</span
+        ><span v-else>Material</span>
+      </h3>
       <input type="text" class="input" v-model="material" />
-      <h3><span v-if="this.$store.getters.languageGet">主题</span><span v-else>Category</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">主题</span
+        ><span v-else>Category</span>
+      </h3>
       <input type="text" class="input" v-model="category" />
-      <h3><span v-if="this.$store.getters.languageGet">状态</span><span v-else>Status</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">状态</span
+        ><span v-else>Status</span>
+      </h3>
       <input type="text" class="input" v-model="status" />
-      <h3><span v-if="this.$store.getters.languageGet">画作图片</span><span v-else>Image URL</span></h3>
+      <h3>
+        <span v-if="this.$store.getters.languageGet">画作图片</span
+        ><span v-else>Image URL</span>
+      </h3>
       <input type="text" class="input" v-model="url" />
     </div>
     <div class="submit-btn">
       <div></div>
-      <button @click="updateArtwork"><span v-if="this.$store.getters.languageGet">更新</span><span v-else>Update</span></button>
+      <button @click="updateArtwork">
+        <span v-if="this.$store.getters.languageGet">更新</span
+        ><span v-else>Update</span>
+      </button>
       <div></div>
     </div>
     <h3>{{ uploadStatus }}</h3>
@@ -85,7 +112,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 #upload {
   height: 65vh;
   width: 100%;
@@ -105,7 +131,6 @@ export default {
   padding-top: 1em;
 
   h3 {
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 0.8rem;
     text-align: center;
@@ -137,7 +162,6 @@ export default {
     border-radius: 1em;
     background-color: white;
     font-size: 0.8rem;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding: 0 0.5em 0 0.5em;
 
@@ -150,15 +174,12 @@ export default {
 
 h3 {
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   letter-spacing: 5px;
 }
 
 @media only screen and (min-width: 600px) {
-
   .upload-form {
-
     h3 {
       font-size: 1rem;
     }
@@ -168,7 +189,6 @@ h3 {
     }
   }
   .submit-btn {
-
     button {
       width: 90%;
       font-size: 1rem;
@@ -182,7 +202,6 @@ h3 {
 }
 
 @media only screen and (min-width: 1024px) {
-
   .upload-form {
     min-height: 15vh;
     width: 100%;

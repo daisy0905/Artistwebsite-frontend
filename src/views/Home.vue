@@ -194,7 +194,6 @@ export default {
 
   h4 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
   }
 }
@@ -230,8 +229,7 @@ export default {
   align-items: center;
 
   p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: white;
     text-align: center;
     padding: 0;

@@ -175,15 +175,15 @@ export default {
   }
 }
 }
-@media only screen and (min-width: 1000px)  {
+@media only screen and (min-width: 1024px)  {
 #cover-image {
     #slider-icon-1 {
       position: fixed;
       left: -17vw;
-      top: 93vh;
+      top: 89vh;
 
       .icon {
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: darkgrey;
       }
     }
@@ -191,10 +191,10 @@ export default {
     #slider-icon-2 {
       position: fixed;
       right: -17vw;
-      top: -1vh;
+      top: -1.5vh;
 
       .icon {
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: darkgrey;
       }
     }

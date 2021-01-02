@@ -96,12 +96,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 #cover-image {
   height: 50vh;
@@ -166,5 +160,20 @@ export default {
         }
     }
 }
+}
+
+@media only screen and (min-width: 1024px) {
+  #cover-image {
+      height: 60vh;
+    #slider-icon {
+      .icon {
+        font-size: 2rem;
+      }
+    }
+
+    #main-image {
+      height: 100%;
+    }
+  }
 }
 </style>

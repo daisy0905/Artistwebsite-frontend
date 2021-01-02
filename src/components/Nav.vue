@@ -125,7 +125,6 @@
 
   h3 {
     font-weight: bold; 
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     letter-spacing: 5px;
   }
@@ -155,7 +154,6 @@
 
   h2 {
     font-weight: bold; 
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
     margin-left: 2em;
     color: white;
@@ -172,7 +170,6 @@
     #login-btn {
         width: 50%;
         height: 3vh;
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         border: 1px solid white;
         box-shadow: 1px 1px 2px grey;
@@ -188,7 +185,6 @@
         margin-right: 1em;
 
     h4 {
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.6rem;
         margin: 0.5em 0 0.5em 0;
         color: white;
@@ -208,7 +204,6 @@
     button {
         width: 70%;
         height: 3vh;
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         border: 1px solid grey;
         box-shadow: none;
@@ -216,7 +211,6 @@
     }
 
     p {
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.6rem;
         margin: 1em 0 0.5em 0;
         text-align: center;

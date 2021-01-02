@@ -47,7 +47,11 @@
       </h3>
       <input type="text" id="url-input" class="input" v-model="url" />
     </div>
-    <upload-image class="upload-image"></upload-image>
+    <upload-image class="upload-image" @newImage="newImage"></upload-image>
+    <div v-if="this.url != ''" class="preview">
+      <img :src="url" alt="" />
+      <!-- <img src="" alt=""> -->
+    </div>
     <div class="submit-btn">
       <div></div>
       <button @click="uploadArtwork">
@@ -110,22 +114,24 @@ export default {
           this.uploadStatus = "Error";
         });
     },
+    newImage: function (data) {
+      this.url = data;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 #upload-form {
-  min-height: 40vh;
+  min-height: 50vh;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: left;
   align-items: left;
-  margin-top: 3em;
+  margin-top: 5em;
 
   h3 {
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 0.8rem;
     text-align: left;
@@ -150,8 +156,21 @@ export default {
   margin-left: 2em;
 }
 
+.preview {
+  width: 100%;
+  min-height: 20vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin-top: 1em;
+
+  img {
+    height: 150px;
+  }
+}
+
 .submit-btn {
-  height: 20vh;
+  height: 15vh;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -165,7 +184,6 @@ export default {
     border-radius: 1em;
     background-color: white;
     font-size: 0.8rem;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding: 0 0.5em 0 0.5em;
 
@@ -179,7 +197,6 @@ export default {
 h3 {
   height: 5vh;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   letter-spacing: 5px;
 }
@@ -197,6 +214,17 @@ h3 {
       font-size: 1rem;
     }
   }
+
+  .upload-image {
+    width: 100%;
+    margin-left: 2em;
+  }
+
+  .preview {
+    img {
+      height: 200px;
+    }
+  }
   .submit-btn {
     button {
       width: 90%;
@@ -206,6 +234,47 @@ h3 {
 
   h3 {
     font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #upload-form {
+    margin-top: 2em;
+    padding-top: 0.5em;
+
+    h3 {
+      font-size: 1rem;
+      margin-left: 3em;
+    }
+
+    .input {
+      margin: 0 0 0.5em 0;
+      font-size: 0.8rem;
+    }
+  }
+
+  .upload-image {
+    width: 100%;
+    margin-left: 2em;
+  }
+
+  .preview {
+    min-height:10vh;
+    margin-top: 0.5em;
+
+    img {
+      height: 100px;
+    }
+  }
+  .submit-btn {
+    button {
+      width: 90%;
+      font-size: 1rem;
+    }
+  }
+
+  h3 {
+    font-size: 0.8rem;
   }
 }
 </style>

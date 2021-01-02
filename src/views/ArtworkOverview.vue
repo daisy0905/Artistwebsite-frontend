@@ -118,6 +118,7 @@ export default {
   position: fixed;
   left: 0;
   bottom: 5vh;
+  z-index: 1000;
 
   img {
     height: 30px;
@@ -127,11 +128,11 @@ export default {
 
 .upload-form {
   position: fixed;
-  height: 72vh;
+  min-height: 100vh;
   width: 90%;
   left: 5vw;
-  bottom: 10vh;
-  z-index: 1000;
+  bottom: 0;
+  z-index: 500;
   background-color: white;
   box-shadow: 4px 4px 4px grey;
 }
@@ -235,7 +236,6 @@ export default {
 
     h4 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 1rem;
     }
   }
@@ -251,10 +251,10 @@ export default {
   }
 
   .upload-form {
-    height: 70vh;
+    height: 100vh;
     width: 40%;
     left: 2vw;
-    bottom: 12vh;
+    bottom: 0;
   }
 
   #go-to-top {
@@ -264,7 +264,7 @@ export default {
     height: 10vh;
 
     a {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
   }
 }

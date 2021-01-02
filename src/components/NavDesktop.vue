@@ -96,23 +96,20 @@
 
     h2 {
         font-weight: bold; 
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 2rem;
         letter-spacing: 5px;
     }
 
     h3 {
         font-weight: bold; 
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-left: 2em;
         color: black;
     }
 
     #login-btn {
         width: 50%;
-        height: 3vh;
-        font-family: Arial, Helvetica, sans-serif;
+        height: 4vh;
         font-size: 0.8rem;
         border: 1px solid black;
         box-shadow: 1px 1px 2px grey;
@@ -138,8 +135,7 @@
             align-items: right;
 
             h4 {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1rem;
+            font-size: 0.8rem;
             margin: 0.5em 0 0.5em 0;
             color: black;
             font-weight: normal;
@@ -158,7 +154,6 @@
         button {
             width: 70%;
             height: 3vh;
-            font-family: Arial, Helvetica, sans-serif;
             font-size: 0.8rem;
             border: 1px solid black;
             box-shadow: none;
@@ -166,7 +161,6 @@
         }
 
         p {
-            font-family: Arial, Helvetica, sans-serif;
             font-size: 0.6rem;
             margin: 1em 0 0.5em 0;
             text-align: center;

@@ -14,10 +14,12 @@
       </div>
       <div class="unit-3">
         <h2>
-         <span v-if="this.$store.getters.languageGet">童柯敏</span><span v-else>TONG, KEMIN</span>
+          <span v-if="this.$store.getters.languageGet">童柯敏</span
+          ><span v-else>TONG, KEMIN</span>
         </h2>
         <h3>
-          <span v-if="this.$store.getters.languageGet">职业油画家</span><span v-else>PROFESSIONAL ARTIST</span>
+          <span v-if="this.$store.getters.languageGet">职业油画家</span
+          ><span v-else>PROFESSIONAL ARTIST</span>
         </h3>
         <p>
           <span v-if="this.$store.getters.languageGet">
@@ -45,12 +47,12 @@
 import PageNavigation from "../components/Nav.vue";
 import NavDesktop from "../components/NavDesktop.vue";
 import FooterSection from "../components/Footer.vue";
-import cookies from "vue-cookies"
+import cookies from "vue-cookies";
 export default {
   components: {
     PageNavigation,
     NavDesktop,
-    FooterSection
+    FooterSection,
   },
   methods: {
     imgeMove: function () {
@@ -59,21 +61,21 @@ export default {
       document.getElementById("image").style.width = "150px";
     },
     showEnglish: function () {
-      cookies.remove("chinese")
-      this.$store.commit("updateLanguage", false)
+      cookies.remove("chinese");
+      this.$store.commit("updateLanguage", false);
       document.getElementById("english").style.color = "red";
       document.getElementById("chinese").style.color = "black";
     },
     showChinese: function () {
-      cookies.set("chinese", true)
-      this.$store.commit("updateLanguage", true)
+      cookies.set("chinese", true);
+      this.$store.commit("updateLanguage", true);
       document.getElementById("chinese").style.color = "red";
       document.getElementById("english").style.color = "black";
     },
   },
-  mounted () {
+  mounted() {
     this.showEnglish();
-  }
+  },
 };
 </script>
 
@@ -108,7 +110,7 @@ export default {
 
   h4 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+
     font-size: 0.8rem;
   }
 }
@@ -144,12 +146,11 @@ export default {
 
     h2 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
+
       font-size: 1rem;
     }
 
     h3 {
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 1rem;
       margin-top: 0.5em;
     }
@@ -157,7 +158,7 @@ export default {
     p {
       width: 70%;
       min-height: 40vh;
-      font-family: Arial, Helvetica, sans-serif;
+
       font-size: 0.8rem;
       text-align: justify;
       line-height: 1.5em;
@@ -253,13 +254,12 @@ export default {
 
     h4 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 1rem;
     }
   }
 
   #content {
-    min-height: 70vh;
+    height: 100vh;
     margin-top: 1em;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -278,7 +278,7 @@ export default {
       align-items: center;
 
       img {
-        height: 70%;
+        height: 350px;
         width: auto;
         border: 4px solid white;
         box-shadow: none;
@@ -286,20 +286,20 @@ export default {
     }
 
     .unit-3 {
-      margin-top: 5em;
+      margin-top: 3em;
 
       h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
 
       h3 {
         width: 70%;
-        font-size: 1.5rem;
+        font-size: 1rem;
       }
 
       p {
         width: 70%;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-top: 1em;
         font-weight: bold;
       }

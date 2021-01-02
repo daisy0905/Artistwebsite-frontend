@@ -39,7 +39,6 @@
     border-bottom: 1px solid lightgrey;
 
     h4 { 
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         margin: 0 0.5em 0 1.2em;
         font-weight: normal;
@@ -67,6 +66,10 @@
 }
 
 @media only screen and (min-width: 1024px) {
-
+    .item {
+        h4 { 
+            font-size: 0.8rem;
+        }
+    }
 }
 </style>

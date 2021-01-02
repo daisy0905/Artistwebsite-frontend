@@ -1,6 +1,10 @@
 <template>
   <div id="image-upload">
-    <img v-if="loading" src="" alt="" />
+    <img
+      v-if="loading"
+      src="../assets/loading.gif"
+      alt="loading preview icon"
+    />
     <input
       v-else
       type="file"
@@ -47,18 +51,50 @@ export default {
 
 <style lang="scss" scoped>
 #image-upload {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
+  width: 80%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  #file-input {
     width: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
+    border: None;
+    background-color: white;
+  }
+
+  img {
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #image-upload {
+    width: 80%;
 
     #file-input {
-        width: 100%;
-        border: None;
+      font-size: 1rem;
+      margin: 0 0 1em 3.5em;
     }
-    // img {
-    //     width: 100px;
-    // }
-}  
+
+    img {
+      width: 250px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #image-upload {
+    width: 80%;
+
+    #file-input {
+      font-size: 1rem;
+      margin: 0 0 1em 3em;
+    }
+
+    img {
+      width: 250px;
+    }
+  }
+}
 </style>

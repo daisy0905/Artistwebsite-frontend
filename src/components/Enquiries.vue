@@ -20,12 +20,6 @@ import AEnquiry from './AEnquiry.vue'
 </script>
 
 <style lang="scss" scoped>
-* {
-    scroll-behavior: smooth;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 #enquiries {
     min-height: 80vh;

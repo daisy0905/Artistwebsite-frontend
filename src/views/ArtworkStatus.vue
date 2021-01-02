@@ -1,9 +1,7 @@
 <template>
   <div id="status-list">
     <nav-admin id="nav-en"></nav-admin>
-    <nav-admin-desktop
-      id="nav-admin-desktop"
-    ></nav-admin-desktop>
+    <nav-admin-desktop id="nav-admin-desktop"></nav-admin-desktop>
     <div id="en-ch">
       <div></div>
       <h4 id="english" @click="showEnglish">EN</h4>
@@ -15,7 +13,8 @@
         <div></div>
         <h5>{{ availableNum }}</h5>
         <h4 id="availableStatus" @click="getAvailable">
-          <span v-if="this.$store.getters.languageGet">在库</span><span v-else>Available</span>
+          <span v-if="this.$store.getters.languageGet">在库</span
+          ><span v-else>Available</span>
         </h4>
         <div></div>
       </div>
@@ -23,7 +22,8 @@
         <div></div>
         <h5>{{ onholdNum }}</h5>
         <h4 id="onHoldStatus" @click="getOnhold">
-          <span v-if="this.$store.getters.languageGet">已预订</span><span v-else>On hold</span>
+          <span v-if="this.$store.getters.languageGet">已预订</span
+          ><span v-else>On hold</span>
         </h4>
         <div></div>
       </div>
@@ -31,7 +31,8 @@
         <div></div>
         <h5>{{ soldNum }}</h5>
         <h4 id="soldStatus" @click="getSold">
-          <span v-if="this.$store.getters.languageGet">已售</span><span v-else>Sold</span>
+          <span v-if="this.$store.getters.languageGet">已售</span
+          ><span v-else>Sold</span>
         </h4>
         <div></div>
       </div>
@@ -71,8 +72,8 @@ export default {
   },
   methods: {
     showEnglish: function () {
-      cookies.remove("chinese")
-      this.$store.commit("updateLanguage", false)
+      cookies.remove("chinese");
+      this.$store.commit("updateLanguage", false);
       document.getElementById("english").style.color = "red";
       document.getElementById("chinese").style.color = "black";
     },
@@ -154,7 +155,7 @@ export default {
 
   h4 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+
     font-size: 0.8rem;
     margin: 0;
   }
@@ -179,14 +180,14 @@ export default {
 
     h5 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
+
       font-size: 0.8rem;
       color: #aab8c2;
     }
 
     h4 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
+
       font-size: 0.8rem;
     }
   }
@@ -297,7 +298,7 @@ export default {
 
     h4 {
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
+
       font-size: 1rem;
     }
   }
@@ -321,12 +322,12 @@ export default {
 
       h5 {
         color: white;
-        font-size: 1.2rem;
+        font-size: 0.8rem;
       }
 
       h4 {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1rem;
       }
     }
   }
