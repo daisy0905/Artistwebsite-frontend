@@ -63,7 +63,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch("getAllArtworks");
+    // this.$store.dispatch("getAllArtworks");
     this.showEnglish();
   },
 };
