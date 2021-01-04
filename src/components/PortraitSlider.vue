@@ -36,12 +36,14 @@ export default {
         Math.abs(this.currentIndex++) % this.images.length
       ].url;
       this.getId();
+      console.log(this.id);
     },
     prev: function () {
       this.mainImageSrc = this.images[
         Math.abs(this.currentIndex--) % this.images.length
       ].url;
       this.getId();
+      console.log(this.id);
     },
     created: function () {
       if(this.images[Math.abs(this.currentIndex) % this.images.length] == undefined) return
