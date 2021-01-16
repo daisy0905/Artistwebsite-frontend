@@ -8,52 +8,24 @@
       <h4 id="chinese" @click="showChinese">中文</h4>
       <div></div>
     </div>
-    <div class="desktop">
-      <div class="landscape-portrait">
-        <div class="unit">
-          <landscape-slider></landscape-slider>
-          <h2>
-            <span v-if="this.$store.getters.languageGet">风景</span
-            ><span v-else>LANDSCAPE</span>
-          </h2>
-        </div>
-        <div class="unit">
-          <portrait-slider></portrait-slider>
-          <h2>
-            <span v-if="this.$store.getters.languageGet">人物</span
-            ><span v-else>PORTRAIT</span>
-          </h2>
-        </div>
-      </div>
-      <div id="others" class="unit">
-        <other-slider></other-slider>
-        <h2>
-          <span v-if="this.$store.getters.languageGet">其它</span
-          ><span v-else>OTHERS</span>
-        </h2>
-      </div>
-    </div>
+    <portfolio-slider></portfolio-slider>
     <footer-section></footer-section>
   </div>
 </template>
 
 <script>
-import LandscapeSlider from "../components/LandscapeSlider.vue";
 import Navigation from "../components/Nav.vue";
-import OtherSlider from "../components/OtherSlider.vue";
-import PortraitSlider from "../components/PortraitSlider.vue";
 import NavDesktop from "../components/NavDesktop.vue";
 import FooterSection from "../components/Footer.vue";
 import cookies from "vue-cookies";
+import PortfolioSlider from '../components/PortfolioSlider.vue';
 
 export default {
   components: {
     Navigation,
-    LandscapeSlider,
-    PortraitSlider,
-    OtherSlider,
     NavDesktop,
     FooterSection,
+    PortfolioSlider,
   },
   methods: {
     showEnglish: function () {
@@ -109,26 +81,6 @@ export default {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
-  }
-}
-
-.unit {
-  width: 100%;
-  height: 50vh;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  position: relative;
-  margin-bottom: 0.3em;
-
-  h2 {
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    position: absolute;
-    color: white;
-    text-align: center;
-    text-shadow: 1px 1px 2px black;
   }
 }
 

@@ -1,39 +1,52 @@
 <template>
   <div id="footer">
     <div id="container-1">
-      <div id="unit-1">
-        <div class="item">
-          <img src="../assets/phone-icon.png" alt="phone icon" />
-          <h4>13908484972</h4>
-        </div>
-        <div class="item">
-          <img src="../assets/email-icon.png" alt="email icon" />
-          <h4>kemin1018@163.com</h4>
-        </div>
-        <div class="item">
-          <img src="../assets/wechat-icon.png" alt="weChat icon" />
-          <h4>TK17Tk17</h4>
-        </div>
+      <div id="icon-container">
+        <img
+          @click="getPhone"
+          src="../assets/phone-icon.png"
+          alt="phone icon"
+        />
+        <img
+          @click="getEmail"
+          src="../assets/email-icon.png"
+          alt="email icon"
+        />
+        <img
+          @click="getWechat"
+          src="../assets/wechat-icon.png"
+          alt="weChat icon"
+        />
+        <img
+          @click="getAddress"
+          src="../assets/address-icon.png"
+          alt="address icon"
+        />
       </div>
-      <div id="unit-2">
-        <div class="item-2">
-          <img src="../assets/address-icon.png" alt="address icon" />
-          <h4 class="address">
-            <span v-if="this.$store.getters.languageGet"
-              >中国长沙岳麓区后湖路后湖国际艺术区童柯敏工作室</span
-            ><span v-else
-              >Studio of Kemin Tong, Houhu International Art Park, Houhu Road,
-              Yuelu District, Changsha, China</span
-            >
-          </h4>
-        </div>
+      <div id="text-container">
+        <a v-if="icon == 'phone'" href="tel:13908484972">13908484972</a>
+        <a v-if="icon == 'email'" href="mailto:kemin1018@163.com"
+          >kemin1018@163.com</a
+        >
+        <h4 v-if="icon == 'wechat'">TK17Tk17</h4>
+        <h4 v-if="icon == 'address'" class="address">
+          <span v-if="this.$store.getters.languageGet"
+            >中国长沙岳麓区后湖路后湖国际艺术区童柯敏工作室</span
+          ><span v-else
+            >Studio of Kemin Tong, Houhu International Art Park, Houhu Road,
+            Yuelu District, Changsha, China
+          </span>
+        </h4>
       </div>
     </div>
-    <p @click="goToContact">
-      <span v-if="this.$store.getters.languageGet">期待留下您的联系方式 ></span
-      ><span v-else>Subscribe to our newsletter ></span>
-    </p>
     <div id="container-2">
+      <p @click="goToContact">
+        <span v-if="this.$store.getters.languageGet"
+          >期待留下您的联系方式 ></span
+        ><span v-else>Subscribe To Our Newsletter ></span>
+      </p>
+    </div>
+    <div id="container-3">
       <h4>
         <span v-if="this.$store.getters.languageGet"
           >网页由Daisy Tong制作于2020年</span
@@ -50,9 +63,26 @@
 <script>
 export default {
   name: "footer-section",
+  data() {
+    return {
+      icon: "phone",
+    };
+  },
   methods: {
     goToContact: function () {
       this.$router.push("/contact");
+    },
+    getPhone: function () {
+      this.icon = "phone";
+    },
+    getEmail: function () {
+      this.icon = "email";
+    },
+    getWechat: function () {
+      this.icon = "wechat";
+    },
+    getAddress: function () {
+      this.icon = "address";
     },
   },
 };
@@ -61,7 +91,6 @@ export default {
 <style lang="scss" scoped>
 #footer {
   width: 100%;
-  height: 30vh;
   display: grid;
   justify-items: center;
   align-items: center;
@@ -69,87 +98,83 @@ export default {
 
 #container-1 {
   width: 100%;
-  height: 20vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
   background-color: darkgrey;
 }
 
-#unit-1 {
+#icon-container {
   width: 100%;
-  height: 100%;
+  height: 7vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+
+    &:hover,
+    &:active {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+}
+
+#text-container {
+  width: 90%;
+  height: 7vh;
   display: grid;
   justify-items: center;
   align-items: center;
 
-  .item {
-    width: 100%;
-    display: grid;
-    justify-items: left;
-    align-items: center;
-    grid-template-columns: 15% 85%;
-    margin-left: 2em;
+  a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: black;
+  }
 
-    img {
-      width: 20px;
-      height: 20px;
-      object-fit: cover;
-    }
+  h4 {
+    font-weight: normal;
+    font-size: 0.8rem;
+    margin: 0;
 
-    h4 {
-      font-weight: bold;
-      font-size: 0.8rem;
-      margin: 0.5em;
-      text-align: left;
+    &:hover,
+    &:active {
+      cursor: pointer;
     }
   }
-}
-
-#unit-2 {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  justify-items: center;
-  align-items: start;
-
-  .item-2 {
-    height: 10vh;
-    width: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: start;
-    margin: 0.5em;
-
-    img {
-      width: 20px;
-      height: 20px;
-      object-fit: cover;
-    }
-
-    .address {
-      font-weight: bold;
-      font-size: 0.8rem;
-      line-height: 1.5em;
-      margin: 0.5em;
-    }
-  }
-}
-
-p {
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-align: center;
-  border-bottom: 1px solid white;
-  padding: 1em;
-  color: white;
-  height: 5vh;
-  width: 100%;
-  background-color: darkgrey;
 }
 
 #container-2 {
+  width: 100%;
+  height: 7vh;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  background-color: darkgrey;
+  padding-top: 1em;
+
+  p {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
+  }
+}
+
+#container-3 {
   width: 100%;
   height: 7vh;
   display: grid;
@@ -166,56 +191,36 @@ p {
 }
 
 @media only screen and (min-width: 600px) {
-  #unit-1 {
-    .item {
-      grid-template-columns: 20% 80%;
-      margin-left: 3em;
+  #icon-container {
+    img {
+      width: 30px;
+      height: 30px;
 
-      img {
-        width: 30px;
-        height: 30px;
-      }
-
-      h4 {
-        font-size: 1.2rem;
+      &:hover,
+      &:active {
+        width: 40px;
+        height: 40px;
       }
     }
   }
 
-  #unit-2 {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: start;
-
-    .item-2 {
-      height: 10vh;
-      width: 100%;
-      display: grid;
-      justify-items: center;
-      align-items: start;
-      margin: 1em;
-
-      img {
-        width: 30px;
-        height: 30px;
-        object-fit: cover;
-      }
-
-      .address {
-        font-size: 1.2rem;
-        width: 90%;
-        line-height: 2em;
-      }
+  #text-container {
+    a {
+      font-size: 1.2rem;
     }
-  }
 
-  p {
-    font-size: 1.2rem;
+    h4 {
+      font-size: 1.2rem;
+    }
   }
 
   #container-2 {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  #container-3 {
     h4 {
       font-size: 1rem;
     }
@@ -223,68 +228,38 @@ p {
 }
 
 @media only screen and (min-width: 1024px) {
-  #footer {
-    height: 35vh;
-  }
+  #icon-container {
+    img {
+      width: 30px;
+      height: 30px;
 
-  #container-1 {
-    height: 25vh;
-    grid-template-columns: 100%;
-  }
-
-  #unit-1 {
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 0.5em;
-
-    .item {
-      justify-items: center;
-      align-items: center;
-      grid-template-columns: 15% 85%;
-      margin-left: 2em;
-
-      img {
-        width: 30px;
-        height: 30px;
-      }
-
-      h4 {
-        font-size: 1rem;
-        text-align: center;
+      &:hover,
+      &:active {
+        width: 40px;
+        height: 40px;
       }
     }
   }
 
-  #unit-2 {
-    align-items: center;
-    justify-items: center;
-
-    .item-2 {
-      justify-items: center;
-      align-items: start;
-      margin: 1em;
-
-      img {
-        width: 30px;
-        height: 30px;
-      }
-
-      .address {
-        font-size: 1rem;
-        line-height: 0;
-        margin-top: 0.5em;
-      }
+  #text-container {
+    a {
+      font-size: 1.2rem;
     }
-  }
 
-  p {
-    font-size: 1rem;
-    text-align: center;
-    padding: 1.5em;
+    h4 {
+      font-size: 1.2rem;
+    }
   }
 
   #container-2 {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  #container-3 {
     h4 {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
 }

@@ -1,44 +1,32 @@
 <template>
   <div id="cover-image">
-    <div id="slider-icon-1">
-      <a class="icon" @click="next" href="#">&#10095;</a>
-    </div>
-    <div id="slider-icon-2">
+    <div id="preview">
+      <div></div>
       <a class="icon" @click="prev" href="#">&#10094;</a>
+      <h3>PREVIEW</h3>
+      <a class="icon" @click="next" href="#">&#10095;</a>
+      <div></div>
     </div>
     <div id="main-image" v-for="i in [currentIndex]" :key="i">
-      <img
-        class="color"
-        v-if="mainImageSrc != ''"
-        @click="goToHome"
-        :src="mainImageSrc"
-      />
+      <img class="color" v-if="mainImageSrc != ''" :src="mainImageSrc" />
       <img
         class="black-and-white"
         v-if="mainImageSrc != ''"
-        @click="goToHome"
         :src="mainImageSrc"
       />
     </div>
     <div id="image-desktop">
       <div id="color-image" v-for="i in [currentIndex]" :key="i">
-        <img
-          class="color"
-          v-if="mainImageSrc != ''"
-          @click="goToHome"
-          :src="mainImageSrc"
-        />
+        <img class="color" v-if="mainImageSrc != ''" :src="mainImageSrc" />
         <div></div>
       </div>
       <div id="grey-image" v-for="i in [currentIndex]" :key="i">
         <div></div>
-        <img
-          class="color"
-          v-if="mainImageSrc != ''"
-          @click="goToHome"
-          :src="mainImageSrc"
-        />
+        <img class="color" v-if="mainImageSrc != ''" :src="mainImageSrc" />
       </div>
+    </div>
+    <div class="text-box">
+      <h4 class="btn btn-white btn- animate" @click="goToHome">ENTER</h4>
     </div>
   </div>
 </template>
@@ -97,12 +85,17 @@ export default {
   justify-items: center;
   align-items: center;
 
-  #slider-icon-1 {
+  #preview {
     height: 6vh;
     width: 100%;
-    position: absolute;
-    left: -40vw;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 25% 10% 30% 10% 25%;
     z-index: 100;
+    position: fixed;
+    top: 0;
+    opacity: 0.6;
 
     .icon {
       color: white;
@@ -110,20 +103,12 @@ export default {
       font-size: 2rem;
       text-shadow: 1px 1px 1px black;
     }
-  }
 
-  #slider-icon-2 {
-    height: 6vh;
-    width: 100%;
-    position: fixed;
-    right: -35vw;
-    bottom: 25vh;
-    z-index: 100;
-
-    .icon {
+    h3 {
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 5px;
       color: white;
-      text-decoration: none;
-      font-size: 2rem;
       text-shadow: 1px 1px 1px black;
     }
   }
@@ -148,54 +133,137 @@ export default {
   #image-desktop {
     display: none;
   }
+
+  .text-box {
+    margin-left: 44vw;
+    margin-top: 42vh;
+    position: fixed;
+    bottom: 5vh;
+    opacity: 0.6;
+
+    h4 {
+      width: 30vw;
+      height: 5vh;
+      padding: 10px 30px;
+      border-radius: 100px;
+      font-size: 1rem;
+    }
+  }
+
+  .btn:link,
+  .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    position: absolute;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+
+  .btn-white {
+    background-color: #fff;
+    color: #777;
+  }
+
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  .btn-white::after {
+    background-color: #fff;
+  }
+
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+
+  .btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+  }
+
+  @keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
 }
 
 @media only screen and (min-width: 600px) {
   #cover-image {
     height: 100vh;
 
-    #slider-icon-1 {
-      left: -42vw;
+    #preview {
+      height: 10vh;
+      top: -2vh;
 
       .icon {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 1px black;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        letter-spacing: 10px;
+        text-shadow: 2px 2px 1px black;
       }
     }
 
-    #slider-icon-2 {
-      right: -37vw;
-
-      .icon {
-        font-size: 3rem;
-      }
+    #image-desktop {
+      display: none;
     }
 
-  #image-desktop {
-    display: none;
+    .text-box {
+      h4 {
+        padding: 13px 30px;
+        font-size: 1.5rem;
+      }
+    }
   }
 }
-}
-@media only screen and (min-width: 1024px)  {
-#cover-image {
-    #slider-icon-1 {
-      position: fixed;
-      left: -17vw;
-      top: 89vh;
+@media only screen and (min-width: 1024px) {
+  #cover-image {
+    #preview {
+      height: 10vh;
+      top: -2vh;
+      grid-template-columns: 37% 5% 16% 5% 37%;
 
       .icon {
-        font-size: 3rem;
-        color: darkgrey;
+        font-size: 2rem;
+        text-shadow: 2px 2px 1px black;
       }
-    }
 
-    #slider-icon-2 {
-      position: fixed;
-      right: -17vw;
-      top: -1.5vh;
-
-      .icon {
-        font-size: 3rem;
-        color: darkgrey;
+      h3 {
+        font-size: 1.2rem;
+        letter-spacing: 10px;
+        text-shadow: 2px 2px 1px black;
       }
     }
 
@@ -236,6 +304,28 @@ export default {
           filter: grayscale(100%);
         }
       }
+    }
+
+    .text-box {
+      margin-left: 40vw;
+      margin-top: 42vh;
+      position: fixed;
+      bottom: 5vh;
+      opacity: 0.8;
+
+      h4 {
+        width: 20vw;
+        height: 5vh;
+        padding: 6px 30px;
+        border-radius: 100px;
+        font-size: 1.5rem;
+      }
+    }
+
+    .btn-white {
+      background-color: lightgrey;
+      color: #777;
+      border: 3px solid white;
     }
   }
 }

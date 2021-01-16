@@ -96,7 +96,7 @@ import Slider from "../components/Slider.vue"
         transform: rotate(0deg);
         font-size: 3rem;
         left: 0vw;
-        text-shadow: 3px 3px 3px grey;
+        text-shadow: 3px 3px 3px black;
         letter-spacing: 5px;
     }
     
@@ -113,7 +113,7 @@ import Slider from "../components/Slider.vue"
         font-size: 3em;
         right: 0;
         top: 0;
-        text-shadow: 3px 3px 3px grey;
+        text-shadow: 3px 3px 3px black;
         letter-spacing: 5px;
     }
 }

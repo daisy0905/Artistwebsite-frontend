@@ -50,8 +50,8 @@ export default {
       cookies.set("chinese", true)
       this.$store.commit("updateLanguage", true)
       console.log(this.$store.getters.languageGet)
-      document.getElementById("chinese").style.color = "red";
       document.getElementById("english").style.color = "black";
+      document.getElementById("chinese").style.color = "red";
     },
   },
   mounted () {
@@ -89,8 +89,11 @@ export default {
 
   h4 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
+    
+    &:hover, &:active {
+      cursor: pointer;
+    }
   }
 }
 

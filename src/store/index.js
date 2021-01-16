@@ -13,7 +13,7 @@ export default new Vuex.Store({
     enquiries: [],
     activePage: 0,
     language: cookies.get("chinese"),
-    currentPage: 1
+    // currentPage: 1
   },
   mutations: {
     updateAllArtworks: function(state, data) {
