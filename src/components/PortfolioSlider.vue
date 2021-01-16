@@ -13,15 +13,16 @@
         <img :src="mainImageSrcL" />
       </div>
       <div class="slider-button">
-        <button v-if="this.$store.getters.idGet" @click="getArtwork">
-          DETAILS
+        <button @click="getArtwork">
+          <span v-if="this.$store.getters.languageGet">详情</span
+          ><span v-else>DETAILS</span>
         </button>
       </div>
     </div>
     <div class="container">
       <div class="slider-icon">
         <a class="icon" @click="prevP" href="#/portfolio">&#10094;</a>
-         <h2>
+        <h2>
           <span v-if="this.$store.getters.languageGet">人物</span
           ><span v-else>PORTRAIT</span>
         </h2>
@@ -31,13 +32,16 @@
         <img :src="mainImageSrcP" />
       </div>
       <div class="slider-button">
-        <button @click="getArtwork">DETAILS</button>
+        <button @click="getArtwork">
+          <span v-if="this.$store.getters.languageGet">详情</span
+          ><span v-else>DETAILS</span>
+        </button>
       </div>
     </div>
     <div class="container">
       <div class="slider-icon">
         <a class="icon" @click="prevO" href="#/portfolio">&#10094;</a>
-         <h2>
+        <h2>
           <span v-if="this.$store.getters.languageGet">其它</span
           ><span v-else>OTHERS</span>
         </h2>
@@ -47,7 +51,10 @@
         <img :src="mainImageSrcO" />
       </div>
       <div class="slider-button">
-        <button @click="getArtwork">DETAILS</button>
+        <button @click="getArtwork">
+          <span v-if="this.$store.getters.languageGet">详情</span
+          ><span v-else>DETAILS</span>
+        </button>
       </div>
     </div>
   </div>
@@ -224,7 +231,7 @@ export default {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 45% 10% 45%;
+    grid-template-columns: 40% 20% 40%;
     position: absolute;
     z-index: 100;
     opacity: 0.8;
