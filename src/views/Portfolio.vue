@@ -8,7 +8,33 @@
       <h4 id="chinese" @click="showChinese">中文</h4>
       <div></div>
     </div>
-    <portfolio-slider></portfolio-slider>
+    <div id="text-container">
+      <div id="text-unit-1">
+        <h2>
+          <span v-if="this.$store.getters.languageGet">风景</span
+          ><span v-else>LANDSCAPE</span>
+        </h2>
+        <h2>
+          <span v-if="this.$store.getters.languageGet">人物</span
+          ><span v-else>PORTRAIT</span>
+        </h2>
+      </div>
+      <div id="text-unit-2">
+        <h2 id="text-3">
+          <span v-if="this.$store.getters.languageGet">其它</span
+          ><span v-else>OTHERS</span>
+        </h2>
+      </div>
+    </div>
+    <div id="artwork-container-1">
+      <artwork-slider Cate="landscape"></artwork-slider>
+      <artwork-slider Cate="portrait"></artwork-slider>
+    </div>
+    <div id="artwork-container-2">
+      <div></div>
+      <artwork-slider Cate="other"></artwork-slider>
+      <div></div>
+    </div> 
     <footer-section></footer-section>
   </div>
 </template>
@@ -18,26 +44,31 @@ import Navigation from "../components/Nav.vue";
 import NavDesktop from "../components/NavDesktop.vue";
 import FooterSection from "../components/Footer.vue";
 import cookies from "vue-cookies";
-import PortfolioSlider from '../components/PortfolioSlider.vue';
+import ArtworkSlider from "../components/ArtworkSlider.vue";
 
 export default {
   components: {
     Navigation,
     NavDesktop,
     FooterSection,
-    PortfolioSlider,
+    ArtworkSlider,
+  },
+  props: {
+    Cate: {
+      type: String,
+    },
   },
   methods: {
     showEnglish: function () {
       cookies.remove("chinese");
       this.$store.commit("updateLanguage", false);
-      document.getElementById("english").style.color = "red";
+      document.getElementById("english").style.color = "#bb9457ff";
       document.getElementById("chinese").style.color = "black";
     },
     showChinese: function () {
       cookies.set("chinese", true);
       this.$store.commit("updateLanguage", true);
-      document.getElementById("chinese").style.color = "red";
+      document.getElementById("chinese").style.color = "#bb9457ff";
       document.getElementById("english").style.color = "black";
     },
   },
@@ -55,8 +86,8 @@ export default {
   min-height: 50vh;
   width: 100%;
   display: grid;
-  align-items: center;
-  row-gap: 0.5vh;
+  justify-items: center;
+  align-items: start;
 }
 
 #nav-en {
@@ -79,9 +110,69 @@ export default {
 
   h4 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
+}
+
+#text-container {
+  width: 100%;
+  margin-top: 0.5em;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  z-index: 50;
+  position: relative;
+
+  #text-unit-1 {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: absolute;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 47vh;
+    top: 19vh;
+
+    h2 {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 1px 1px 1px black;
+    }
+  }
+
+  #text-unit-2 {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: absolute;
+    top: 122vh;
+
+    h2 {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 1px 1px 1px black;
+    }
+  }
+}
+
+#artwork-container-1 {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#artwork-container-2 {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 600px) {
@@ -94,14 +185,38 @@ export default {
       font-size: 1.2rem;
     }
   }
-  .unit {
-    h2 {
-      font-size: 2rem;
+
+  #text-container {
+    #text-unit-1 {
+      row-gap: 58vh;
+      top: 19vh;
+
+      h2 {
+        font-size: 1.8rem;
+        text-shadow: 2px 2px 2px black;
+      }
+    }
+
+    #text-unit-2 {
+      top: 141vh;
+
+      h2 {
+        font-size: 1.8rem;
+        text-shadow: 2px 2px 2px black;
+      }
     }
   }
 }
 
 @media only screen and (min-width: 1024px) {
+  #portfolio {
+    min-height: 60vh;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+  }
+
   #nav-en {
     display: none;
   }
@@ -115,7 +230,7 @@ export default {
   }
 
   #en-ch {
-    height: 5vh;
+    height: 13vh;
     width: 100%;
     display: grid;
     justify-items: center;
@@ -130,36 +245,45 @@ export default {
     }
   }
 
-  .desktop {
+  #text-container {
     width: 100%;
-    min-height: 100vh;
+    margin-top: 0.5em;
     display: grid;
     justify-items: center;
-    align-items: start;
-    row-gap: 0.5em;
-    margin-top: 0;
+    align-items: center;
+    position: relative;
 
-    .landscape-portrait {
-      width: 100%;
-      height: 60vh;
-      display: grid;
-      justify-items: center;
-      align-items: start;
+    #text-unit-1 {
       grid-template-columns: 1fr 1fr;
-      column-gap: 0.5em;
+      top: 20vh;
 
-      .unit {
-        h2 {
-          font-size: 2rem;
-          top: 23vh;
-        }
+      h2 {
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
+      }
+    }
+
+    #text-unit-2 {
+      top: 88vh;
+
+      h2 {
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
       }
     }
   }
 
-  #others {
-    width: 50%;
-    height: 60vh;
+  #artwork-container-1 {
+    height: 65vh;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1em;
+    column-gap: 1em;
+  }
+
+  #artwork-container-2 {
+    height: 65vh;
+    grid-template-columns: 25% 50% 25%;
+    margin-bottom: 1em;
   }
 }
 </style>

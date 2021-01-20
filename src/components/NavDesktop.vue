@@ -19,41 +19,41 @@
         <span v-if="this.$store.getters.languageGet">与我联系</span
         ><span v-else>CONTACT</span>
       </h3>
-      <button id="login-btn" @click="showInput">
+      <h3 id="login-btn" @click="showInput">
         <span v-if="this.$store.getters.languageGet">管理员登录</span
         ><span v-else>admin login</span>
-      </button>
+      </h3>
     </div>
     <div v-if="show == false" id="login">
-      <div></div>
       <div id="form">
-        <h4>
+        <h5>
           <span v-if="this.$store.getters.languageGet">用户名</span
           ><span v-else>Username</span>
-        </h4>
+        </h5>
         <input
           type="text"
           id="username-input"
           class="input"
           v-model="username"
         />
-        <h4>
+        <h5>
           <span v-if="this.$store.getters.languageGet">密码</span
           ><span v-else>Password</span>
-        </h4>
+        </h5>
         <input
           type="password"
           id="password-input"
           class="input"
           v-model="password"
         />
-        <button @click="login">
+        <div></div>
+        <h4 @click="login">
           <span v-if="this.$store.getters.languageGet">登录</span
           ><span v-else>Log In</span>
-        </button>
+        </h4>
+        <div></div>
         <p>{{ loginStatus }}</p>
       </div>
-      <div></div>
     </div>
   </div>
 </template>
@@ -108,7 +108,7 @@ export default {
       this.show = !this.show;
     },
     login: function () {
-      if (this.username == "daisy0905" && this.password == "felix1101") {
+      if (this.username == "test" && this.password == "test123") {
         this.loginStatus = "Login Success!";
         setTimeout(() => {
           this.$router.push("/artworkoverview");
@@ -148,7 +148,7 @@ export default {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 30% repeat(5, 10%) auto;
+  grid-template-columns: 25% repeat(5, 12%) auto;
   justify-items: center;
   align-items: center;
   border-bottom: 1px solid darkgrey;
@@ -157,11 +157,16 @@ export default {
     font-weight: bold;
     font-size: 2rem;
     letter-spacing: 5px;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 
   h3 {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-left: 2em;
     color: black;
 
@@ -177,63 +182,75 @@ export default {
   }
 
   #login-btn {
-    width: 50%;
-    height: 4vh;
+    width: 40%;
+    height: 5vh;
     font-size: 0.8rem;
     border: 1px solid black;
     box-shadow: 1px 1px 2px grey;
     font-weight: bold;
     margin-right: 2em;
+    padding: 0.2em 0 0.4em 0;
   }
 }
 #login {
-  width: 100%;
+  width: 40%;
   height: 100%;
   display: grid;
   justify-items: right;
-  align-items: right;
+  align-items: center;
   margin-right: 1em;
-  grid-template-columns: 60% 35% 5%;
   z-index: 100;
+  position: relative;
 
   #form {
     width: 40%;
-    height: 90%;
+    height: 12vh;
     display: grid;
     justify-items: right;
-    align-items: right;
+    align-items: center;
+    grid-template-columns: 0.5fr 1fr;
+    position: absolute;
+    right: -26vw;
+    top: 0;
 
-    h4 {
+    h5 {
       font-size: 0.8rem;
-      margin: 0.5em 0 0.5em 0;
+      margin: 0.2em 0 0.2em 0;
       color: black;
       font-weight: normal;
     }
 
     .input {
-      width: 70%;
+      width: 80%;
       height: 2vh;
       background-color: none;
       border: none;
       border-bottom: 1px solid black;
-      margin: 0 0 0.5em 0;
+      margin: 0 0 0.2em 0;
       text-align: center;
+      font-size: 0.8rem;
     }
 
-    button {
-      width: 70%;
-      height: 3vh;
+    h4 {
+      width: 80%;
+      height: 4vh;
       font-size: 0.8rem;
       border: 1px solid black;
       box-shadow: none;
-      margin: 0.5em 0 0 0;
+      margin: 0.1em 0 0 0;
+      padding: 0.1em 0.4em 0.1em 0.4em;
+
+      &:hover,
+      &:active {
+        cursor: pointer;
+      }
     }
 
     p {
       font-size: 0.6rem;
       margin: 1em 0 0.5em 0;
       text-align: center;
-      color: black;
+      color: white;
     }
   }
 }

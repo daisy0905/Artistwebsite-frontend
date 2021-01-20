@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "artwork-card",
   data() {
@@ -29,44 +27,18 @@ export default {
       type: Object,
       required: true,
     },
-  },
-  methods: {
-    getArtworkCard: function () {
-      axios
-        .request({
-          url: "https://artisttongkemin.ml/api/artwork",
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          params: {
-            id: this.art.id,
-          },
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
-  computed: {
-    arts: function () {
-      console.log(this.arts);
-      return this.$store.state.artworks;
-    },
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .artwork-card {
-  min-height: 70vh;
+  min-height: 50vh;
   width: 90%;
   display: grid;
   justify-items: center;
   align-items: start;
+  align-content: start;
   border: 1px solid #aab8c2;
   row-gap: 1vh;
   margin: 0.5em;
@@ -151,6 +123,7 @@ export default {
     height: 40vh;
     h3 {
       font-size: 1.2rem;
+      margin-bottom: 1.5em;
     }
 
     h4 {

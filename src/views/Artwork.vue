@@ -1,14 +1,14 @@
 <template>
-  <div id="landscape">
+  <div id="artwork">
     <navigation id="nav-en"></navigation>
     <nav-desktop id="nav-desktop"></nav-desktop>
-    <div id="en-ch-mobile">
+    <div id="en-ch">
       <div></div>
       <h4 id="english" @click="showEnglish">EN</h4>
       <h4 id="chinese" @click="showChinese">中文</h4>
       <div></div>
     </div>
-    <div id="search-bar-mobile">
+    <div id="search-bar">
       <div></div>
       <input type="text" class="search" v-model="content" />
       <img
@@ -18,77 +18,35 @@
       />
       <div></div>
     </div>
-    <div id="desktop">
-      <div></div>
-      <h4 id="english-show" @click="English">EN</h4>
-      <h4 id="chinese-show" @click="Chinese">中文</h4>
-      <div></div>
-      <input type="text" class="search" v-model="content" />
-      <img
-        @click="getArtworkList"
-        src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png"
-        alt="search icon"
-      />
-      <div></div>
-    </div>
-    <div id="content">
-      <div id="image-detail">
+    <div id="content-container">
+      <div id="image-container">
         <img :src="url" />
       </div>
-      <div id="description">
-        <h2>{{ name }}</h2>
-        <p>{{ length }} X {{ width }}</p>
-        <p>{{ material }}</p>
-        <p>{{ completed_at }}</p>
-      </div>
-    </div>
-    <div id="status">
-      <p @click="statusCheck">{{ status }}</p>
-    </div>
-    <div id="btn-container">
-      <button @click="showEnquiry" class="btn-1">
-        <span v-if="this.$store.getters.languageGet">询价</span
-        ><span v-else>Enquiry</span>
-      </button>
-      <button class="btn-1" v-if="artStatus == true" @click="addToCart">
-        <span v-if="this.$store.getters.languageGet">下订单</span
-        ><span v-else>Add to Cart</span>
-      </button>
-      <button v-else class="btn-2">
-        <span v-if="this.$store.getters.languageGet">下订单</span
-        ><span v-else>Add to Cart</span>
-      </button>
-    </div>
-    <div id="alert" v-if="show == true">
-      <button class="closebtn" @click="close">&times;</button>
-      <h4>{{ updateStatus }}</h4>
-    </div>
-    <div id="description-desktop">
-      <div id="image-detail-desktop">
-        <img :src="url" />
-      </div>
-      <div id="content-desktop">
-        <h2>{{ name }}</h2>
-        <p>{{ length }} X {{ width }}</p>
-        <p>{{ material }}</p>
-        <p>{{ completed_at }}</p>
-        <div></div>
-        <p id="text-status" @click="statusCheck">{{ status }}</p>
-        <button @click="showEnquiryForm" class="btn-1">
-          <span v-if="this.$store.getters.languageGet">询价</span
-          ><span v-else>Enquiry</span>
-        </button>
-        <button class="btn-1" v-if="artStatus == true" @click="addToCart">
-          <span v-if="this.$store.getters.languageGet">下订单</span
-          ><span v-else>Add to Cart</span>
-        </button>
-        <button v-else class="btn-2">
-          <span v-if="this.$store.getters.languageGet">下订单</span
-          ><span v-else>Add to Cart</span>
-        </button>
-        <div id="alert-desktop" v-if="show == true">
-          <button class="closebtn" @click="closeDesktop">&times;</button>
-          <h4>{{ updateStatus }}</h4>
+      <div id="text-container">
+        <div id="description">
+          <h3>{{ name }}</h3>
+          <p>{{ length }} X {{ width }}</p>
+          <p>{{ material }}</p>
+          <p>{{ completed_at }}</p>
+        </div>
+        <div id="button">
+          <p @click="statusCheck">{{ status }}</p>
+          <p @click="showEnquiryForm" class="btn-1">
+            <span v-if="this.$store.getters.languageGet">询价</span
+            ><span v-else>Enquiry</span>
+          </p>
+          <p class="btn-1" v-if="artStatus == true" @click="addToCart">
+            <span v-if="this.$store.getters.languageGet">下订单</span
+            ><span v-else>Add to Cart</span>
+          </p>
+          <p v-else class="btn-2">
+            <span v-if="this.$store.getters.languageGet">下订单</span
+            ><span v-else>Add to Cart</span>
+          </p>
+          <div id="alert" v-if="show == true">
+            <button class="closebtn" @click="close">&times;</button>
+            <h4>{{ updateStatus }}</h4>
+          </div>
         </div>
       </div>
     </div>
@@ -165,19 +123,16 @@ export default {
     close: function () {
       document.getElementById("alert").style.display = "none";
     },
-    showEnquiry: function () {
-      this.$router.push("/enquiry");
-    },
     showEnglish: function () {
       cookies.remove("chinese");
       this.$store.commit("updateLanguage", false);
-      document.getElementById("english").style.color = "red";
+      document.getElementById("english").style.color = "#bb9457ff";
       document.getElementById("chinese").style.color = "black";
     },
     showChinese: function () {
       cookies.set("chinese", true);
       this.$store.commit("updateLanguage", true);
-      document.getElementById("chinese").style.color = "red";
+      document.getElementById("chinese").style.color = "#bb9457ff";
       document.getElementById("english").style.color = "black";
     },
     getArtworkList: function () {
@@ -194,21 +149,18 @@ export default {
       this.display = true;
       cookies.remove("chinese");
       this.$store.commit("updateLanguage", false);
-      document.getElementById("english-show").style.color = "red";
+      document.getElementById("english-show").style.color = "#bb9457ff";
       document.getElementById("chinese-show").style.color = "black";
     },
     Chinese: function () {
       this.display = false;
       cookies.set("chinese", true);
       this.$store.commit("updateLanguage", true);
-      document.getElementById("chinese-show").style.color = "red";
+      document.getElementById("chinese-show").style.color = "#bb9457ff";
       document.getElementById("english-show").style.color = "black";
     },
   },
   mounted: function () {
-    if (this.$store.state.artworks.length == 0) {
-      this.$store.dispatch("getAllArtworks");
-    }
     if (this.$store.state.artwork.length == 0) {
       this.$store.dispatch("getArtwork");
     }
@@ -251,12 +203,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#landscape {
+#artwork {
   min-height: 100vh;
   width: 100%;
   display: grid;
   align-items: start;
   justify-items: center;
+  position: relative;
 }
 
 #nav-en {
@@ -268,7 +221,7 @@ export default {
   display: none;
 }
 
-#en-ch-mobile {
+#en-ch {
   min-height: 5vh;
   width: 100%;
   display: grid;
@@ -281,10 +234,15 @@ export default {
     font-weight: bold;
     font-size: 0.8rem;
     margin: 0;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 }
 
-#search-bar-mobile {
+#search-bar {
   min-height: 8vh;
   width: 100%;
   display: grid;
@@ -298,6 +256,7 @@ export default {
     background-color: white;
     text-align: center;
     color: grey;
+    font-size: 1rem;
   }
 
   img {
@@ -305,140 +264,140 @@ export default {
   }
 }
 
-#desktop {
-  display: none;
-}
-
-#content {
-  min-height: 40vh;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-
-#image-detail {
-  min-height: 20vh;
+#content-container {
   width: 100%;
   display: grid;
   align-items: start;
   justify-items: center;
 
-  img {
-    width: 90%;
-    vertical-align: super;
-  }
-}
+  #image-container {
+    min-height: 20vh;
+    width: 100%;
+    display: grid;
+    align-items: start;
+    justify-items: center;
 
-#description {
-  min-height: 20vh;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  margin: 0;
-
-  h2 {
-    width: 90%;
-    font-weight: bold;
-    font-size: 1rem;
-    text-align: center;
-    margin: 0;
-    letter-spacing: 1px;
-    margin-top: 0.5em;
-  }
-
-  p {
-    font-size: 0.8rem;
-    margin: 0;
-  }
-}
-
-#status {
-  height: 5vh;
-  width: 25vw;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-
-  p {
-    background-color: grey;
-
-    font-size: 0.8rem;
-    margin: 0;
-    padding: 0.5em;
-    color: white;
-    font-weight: bold;
-    letter-spacing: 3px;
-  }
-}
-
-#btn-container {
-  min-height: 20vh;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-template-rows: 1fr 1fr;
-  margin-top: 1em;
-
-  .btn-1 {
-    width: 25vw;
-    height: 5vh;
-
-    font-size: 0.8rem;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px grey;
-    font-weight: bold;
-  }
-
-  .btn-2 {
-    width: 25vw;
-    height: 5vh;
-
-    font-size: 0.8rem;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px grey;
-    font-weight: bold;
-    text-decoration: line-through;
-  }
-}
-
-#alert {
-  height: 5vh;
-  width: 40vw;
-  background-color: lightgrey;
-
-  .closebtn {
-    height: 100%;
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    text-align: center;
-
-    :hover {
-      color: black;
+    img {
+      width: 90%;
+      height: auto;
+      vertical-align: super;
+      border: 4px solid darkgrey;
     }
   }
 
-  h4 {
-    font-size: 0.8rem;
-    text-align: center;
-    margin: 0;
+  #text-container {
+    width: 100%;
+    display: grid;
+    align-items: start;
+    justify-items: center;
+    margin-top: 1em;
+
+    #description {
+      min-height: 20vh;
+      width: 100%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      margin: 0;
+
+      h3 {
+        width: 90%;
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: center;
+        margin: 0;
+        letter-spacing: 1px;
+        margin-top: 0.5em;
+      }
+
+      p {
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+
+    #button {
+      min-height: 30vh;
+      width: 40%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+
+      p {
+        width: 100%;
+        background-color: grey;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0.5em;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 3px;
+      }
+
+      .btn-1 {
+        width: 100%;
+        height: 5vh;
+        font-size: 1rem;
+        border: 1px solid black;
+        box-shadow: 1px 1px 2px grey;
+        font-weight: bold;
+        padding-top: 0.5em;
+
+        &:hover,
+        &:active {
+          cursor: pointer;
+        }
+      }
+
+      .btn-2 {
+        width: 100%;
+        height: 5vh;
+        font-size: 1rem;
+        border: 1px solid black;
+        box-shadow: 1px 1px 2px grey;
+        font-weight: bold;
+        text-decoration: line-through;
+        padding-top: 0.5em;
+      }
+
+      #alert {
+        height: 5vh;
+        width: 40vw;
+        background-color: lightgrey;
+
+        .closebtn {
+          height: 100%;
+          margin-left: 15px;
+          color: black;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+          text-align: center;
+
+          :hover {
+            color: black;
+          }
+        }
+
+        h4 {
+          font-size: 0.8rem;
+          text-align: center;
+          margin: 0;
+        }
+      }
+    }
   }
 }
 
-#description-desktop {
-  display: none;
-}
-
 .enquiry-form {
-  display: none;
+  width: 90%;
+  min-height: 50vh;
+  position: absolute;
+  top: 19vh;
+  left: 5vw;
 }
 
 @media only screen and (min-width: 600px) {
@@ -446,13 +405,13 @@ export default {
     display: none;
   }
 
-  #en-ch-mobile {
+  #en-ch {
     h4 {
       font-size: 1.2rem;
     }
   }
 
-  #search-bar-mobile {
+  #search-bar {
     .search {
       height: 4vh;
       font-size: 1.2rem;
@@ -463,69 +422,68 @@ export default {
     }
   }
 
-  #desktop {
-    display: none;
+  #content-container {
+    #image-container {
+      img {
+        border: 6px solid darkgrey;
+      }
+    }
+
+    #text-container {
+      #description {
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1.5rem;
+        }
+      }
+
+      #button {
+        width: 35%;
+
+        p {
+          font-size: 1.5rem;
+        }
+
+        .btn-1 {
+          font-size: 1.5rem;
+        }
+
+        .btn-2 {
+          font-size: 1.5rem;
+        }
+
+        #alert {
+          height: 5vh;
+          width: 40vw;
+          background-color: lightgrey;
+
+          .closebtn {
+            font-size: 25px;
+            line-height: 20px;
+          }
+
+          h4 {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
   }
 
-  #description {
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-    }
+  .enquiry-form {
+    width: 90%;
+    min-height: 70vh;
+    position: absolute;
+    top: 19vh;
+    left: 5vw;
   }
-
-  #status {
-    height: 8vh;
-
-    p {
-      width: 25vw;
-      font-size: 1.5rem;
-    }
-  }
-
-  #btn-container {
-    .btn-1 {
-      font-size: 1.2rem;
-    }
-
-    .btn-2 {
-      font-size: 1.2rem;
-    }
-  }
-
-  #alert {
-    .closebtn {
-      width: 15%;
-      font-size: 50px;
-    }
-
-    h4 {
-      font-size: 1.2rem;
-    }
-  }
-
-  #description-desktop {
-    display: none;
-  }
-}
-
-.enquiry-form {
-  display: none;
 }
 
 @media only screen and (min-width: 1024px) {
   #nav-en {
-    display: none;
-  }
-
-  #en-ch-mobile {
-    display: none;
-  }
-
-  #search-bar-mobile {
     display: none;
   }
 
@@ -537,165 +495,87 @@ export default {
     align-items: center;
   }
 
-  #desktop {
-    height: 10vh;
+  #en-ch {
+    height: 13vh;
     width: 100%;
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 5% 10% 10% 48% 22% 5%;
-    margin: 0 1em 0 1em;
+    grid-template-columns: 5% 10% 10% auto;
+    background-color: white;
+    margin-left: 1em;
 
     h4 {
       font-weight: bold;
-
       font-size: 1rem;
     }
+  }
+
+  #search-bar {
+    height: 10vh;
+    grid-template-columns: 5% 45% 10% 50%;
+    margin: 0 1em 1em 1em;
 
     .search {
-      height: 4vh;
-      width: 100%;
-      background-color: white;
-      text-align: center;
-      color: grey;
-      font-size: 1rem;
-    }
-
-    img {
-      width: 25px;
+      height: 6vh;
     }
   }
 
-  #content {
-    display: none;
-  }
+  #content-container {
+    grid-template-columns: 1.5fr 1fr;
+    margin-bottom: 2em;
 
-  #status {
-    display: none;
-  }
+    #text-container {
+      
+      #description {
+        min-height: 40vh;
+        h3 {
+          font-size: 1.2rem;
+        }
 
-  #btn-container {
-    display: none;
-  }
+        p {
+          font-size: 1.2rem;
+        }
+      }
 
-  #alert {
-    display: none;
-  }
+      #button {
+        width: 35%;
+        min-height: 50vh;
 
-  #description-desktop {
-    width: 100%;
-    min-height: 90vh;
-    display: grid;
-    grid-template-columns: 70% 30%;
-    justify-items: center;
-    align-items: start;
-  }
+        p {
+          font-size: 1.2rem;
+          margin-top: 2em;
+        }
 
-  #image-detail-desktop {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: start;
+        .btn-1 {
+          font-size: 1.2rem;
+          height: 2.5em;
+        }
 
-    img {
-      height: 95%;
-    }
-  }
+        .btn-2 {
+          font-size: 1.2rem;
+          height: 2.5em;
+        }
 
-  #content-desktop {
-    width: 100%;
-    min-height: 85vh;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-rows: repeat(4, 10%) 15% repeat(4, 10%);
-    row-gap: 0.5em;
+        #alert {
+          height: 7vh;
+          width: 100%;
+          margin-top: 1em;
 
-    h2 {
-      width: 90%;
-      font-weight: bold;
-      font-size: 1.2rem;
-      text-align: center;
-      margin: 0;
-      letter-spacing: 1px;
-    }
 
-    p {
-      width: 90%;
-      font-size: 1rem;
-      margin: 0;
-      line-height: 2em;
-    }
-
-    #text-status {
-      height: 8vh;
-      width: 15vw;
-      background-color: grey;
-      font-size: 1rem;
-      margin: 0 0 2.5em 0;
-      padding: 0;
-      color: white;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
-
-    .btn-1 {
-      width: 15vw;
-      height: 5vh;
-      font-size: 1rem;
-      border: 1px solid black;
-      box-shadow: 1px 1px 2px grey;
-      font-weight: bold;
-    }
-
-    .btn-2 {
-      width: 15vw;
-      height: 5vh;
-      font-size: 1rem;
-      border: 1px solid black;
-      box-shadow: 1px 1px 2px grey;
-      font-weight: bold;
-      text-decoration: line-through;
-    }
-  }
-
-  #alert-desktop {
-    height: 5vh;
-    width: 15vw;
-    background-color: lightgrey;
-
-    .closebtn {
-      height: 100%;
-      margin-left: 15px;
-      color: white;
-      font-weight: bold;
-      float: right;
-      font-size: 22px;
-      line-height: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-      text-align: center;
-
-      :hover {
-        color: black;
+          h4 {
+            font-size: 1rem;
+            padding-top: 0.3em;
+          }
+        }
       }
     }
-
-    h4 {
-      font-size: 0.8rem;
-      text-align: center;
-      margin: 0;
-    }
   }
+
   .enquiry-form {
-    height: 100vh;
-    display: grid;
-    justify-items: center;
-    align-items: start;
-    position: fixed;
-    top: 0;
-    right: -1em;
+    position: absolute;
+    top: 40vh;
+    left: 30vw;
   }
 }
 </style>

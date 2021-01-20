@@ -21,54 +21,54 @@
     <div v-if="display == false" id="nav-bar">
       <div id="nav-unit-1">
         <div></div>
-        <h2 :style="home" @click="goToHome">
+        <h4 :style="home" @click="goToHome">
           <span v-if="this.$store.getters.languageGet">首页</span
           ><span v-else>HOME</span>
-        </h2>
-        <h2 :style="bio" @click="goToBio">
+        </h4>
+        <h4 :style="bio" @click="goToBio">
           <span v-if="this.$store.getters.languageGet">个人简介</span
           ><span v-else>BIO</span>
-        </h2>
-        <h2 :style="portfolio" @click="goToPortfolio">
+        </h4>
+        <h4 :style="portfolio" @click="goToPortfolio">
           <span v-if="this.$store.getters.languageGet">作品集</span
           ><span v-else>PORTFOLIO</span>
-        </h2>
-        <h2 :style="contact" @click="goToContact">
+        </h4>
+        <h4 :style="contact" @click="goToContact">
           <span v-if="this.$store.getters.languageGet">与我联系</span
           ><span v-else>CONTACT</span>
-        </h2>
+        </h4>
         <div></div>
       </div>
       <div id="nav-unit-2">
-        <button id="login-btn" @click="showInput">
+        <h4 id="login-btn" @click="showInput">
           <span v-if="this.$store.getters.languageGet">管理员登录</span
           ><span v-else>admin login</span>
-        </button>
+        </h4>
         <div v-if="show == false" id="login">
-          <h4>
+          <h5>
             <span v-if="this.$store.getters.languageGet">用户名</span
             ><span v-else>Username</span>
-          </h4>
+          </h5>
           <input
             type="text"
             id="username-input"
             class="input"
             v-model="username"
           />
-          <h4>
+          <h5>
             <span v-if="this.$store.getters.languageGet">密码</span
             ><span v-else>Password</span>
-          </h4>
+          </h5>
           <input
             type="password"
             id="password-input"
             class="input"
             v-model="password"
           />
-          <button @click="login">
+          <h4 @click="login">
             <span v-if="this.$store.getters.languageGet">登录</span
             ><span v-else>Log In</span>
-          </button>
+          </h4>
           <p>{{ loginStatus }}</p>
           <div></div>
         </div>
@@ -134,7 +134,7 @@ export default {
       this.show = !this.show;
     },
     login: function () {
-      if (this.username == "daisy0905" && this.password == "felix1101") {
+      if (this.username == "test" && this.password == "test123") {
         this.loginStatus = "Login Success!";
         setTimeout(() => {
           this.$router.push("/artworkoverview");
@@ -195,7 +195,11 @@ export default {
   h3 {
     font-weight: bold;
     font-size: 1rem;
-    letter-spacing: 5px;
+    letter-spacing: 0.5em;
+
+    &:hover, &:active {
+      cursor: pointer;
+    }
   }
 }
 
@@ -209,7 +213,7 @@ export default {
   position: absolute;
   top: 14vh;
   background-color: black;
-  opacity: 0.7;
+  opacity: 0.8;
   z-index: 100;
 
   #nav-unit-1 {
@@ -221,11 +225,12 @@ export default {
     row-gap: 1em;
   }
 
-  h2 {
+  h4 {
     font-weight: bold;
     font-size: 0.8rem;
     margin-left: 2em;
     color: white;
+    letter-spacing: 0.2em;
 
     &:hover {
       cursor: pointer;
@@ -243,36 +248,36 @@ export default {
     height: 8vh;
     display: grid;
     justify-items: right;
-    align-items: left;
+    align-items: center;
     margin-top: 1em;
 
     #login-btn {
-      width: 50%;
+      width: 55%;
       height: 3vh;
       font-size: 0.8rem;
       border: 1px solid white;
       box-shadow: 1px 1px 2px grey;
       font-weight: bold;
-      margin-right: 2em;
+      margin: 0 2em 0.5em 0;
     }
 
     #login {
-      width: 70%;
+      width: 75%;
       display: grid;
       justify-items: right;
       align-items: center;
-      margin-right: 1em;
+      margin-right: 1.6em;
 
-      h4 {
+      h5 {
         font-size: 0.6rem;
-        margin: 0.5em 0 0.5em 0;
+        margin-bottom: 0.2em;
         color: white;
         font-weight: normal;
       }
 
       .input {
-        width: 70%;
-        height: 3vh;
+        width: 75%;
+        height: 2.5vh;
         background-color: none;
         border: none;
         border-bottom: 1px solid black;
@@ -280,18 +285,19 @@ export default {
         text-align: center;
       }
 
-      button {
-        width: 70%;
+      h4 {
+        width: 75%;
         height: 3vh;
         font-size: 0.8rem;
         border: 1px solid grey;
         box-shadow: none;
-        margin: 0.5em 0 0 0;
+        margin: 0.2em 0 0 0;
+        font-weight: normal;
       }
 
       p {
         font-size: 0.6rem;
-        margin: 1em 0 0.5em 0;
+        margin: 0.5em 0 0.5em 0;
         text-align: center;
         color: white;
       }

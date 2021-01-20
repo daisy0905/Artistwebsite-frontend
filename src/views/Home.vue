@@ -9,12 +9,12 @@
       <div></div>
     </div>
     <div id="content">
-      <img src="../assets/artist.jpg" alt="" />
+      <img src="../assets/artist.png" alt="artist's portrait" />
       <div></div>
     </div>
     <div class="text">
-      <p><span v-if="this.$store.getters.languageGet">油画艺术家</span><span v-else>OIL PAINTING ARTIST</span></p>
-      <p><span v-if="this.$store.getters.languageGet">童柯敏</span><span v-else>TONG, KEMIN</span></p>
+      <h1><span v-if="this.$store.getters.languageGet">油画艺术家</span><span v-else>OIL PAINTING ARTIST</span></h1>
+      <h1><span v-if="this.$store.getters.languageGet">童柯敏</span><span v-else>TONG, KEMIN</span></h1>
     </div>
     <footer-section></footer-section>
   </div>
@@ -43,7 +43,7 @@ export default {
       cookies.remove("chinese")
       this.$store.commit("updateLanguage", false)
       console.log(this.$store.getters.languageGet)
-      document.getElementById("english").style.color = "red";
+      document.getElementById("english").style.color = "#bb9457ff";
       document.getElementById("chinese").style.color = "black";
     },
     showChinese: function () {
@@ -51,7 +51,7 @@ export default {
       this.$store.commit("updateLanguage", true)
       console.log(this.$store.getters.languageGet)
       document.getElementById("english").style.color = "black";
-      document.getElementById("chinese").style.color = "red";
+      document.getElementById("chinese").style.color = "#bb9457ff";
     },
   },
   mounted () {
@@ -119,14 +119,13 @@ export default {
   justify-items: center;
   align-items: center;
 
-  p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
+  h1 {
+    font-size: 1.8rem;
     color: white;
     text-align: center;
     padding: 0.5em;
     letter-spacing: 5px;
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 2px 2px 2px black;
     font-weight: bold;
   }
 }
@@ -153,8 +152,9 @@ export default {
 
 .text {
 
-  p {
-    font-size: 2rem;
+  h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.5em;
   }
 }
 
@@ -179,14 +179,14 @@ export default {
 
 #nav-desktop {
   width: 100%;
-  height: 10vh;
+  height: 12vh;
   display: grid;
   justify-items: center;
   align-items: center;
 }
 
 #en-ch {
-  height: 7vh;
+  height: 13vh;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -215,7 +215,6 @@ export default {
   img {
     width: 100%;
     object-fit: cover;
-    // margin: 1em 0 0 5em;
     margin-top: 0;
     filter: grayscale(100%);
   }
@@ -231,8 +230,8 @@ export default {
   justify-items: center;
   align-items: center;
 
-  p {
-    font-size: 2rem;
+  h1 {
+    font-size: 1.8rem;
     color: white;
     text-align: center;
     padding: 0;

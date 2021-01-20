@@ -37,9 +37,7 @@
         <div></div>
       </div>
     </div>
-    <available class="status" v-if="status == 'available'"></available>
-    <onhold class="status" v-if="status == 'onhold'"></onhold>
-    <sold class="status" v-if="status == 'sold'"></sold>
+    <status class="status" :Status="status"></status>
     <footer-contact></footer-contact>
     <div id="go-to-top">
       <a href="#status-list">TO TOP</a>
@@ -48,27 +46,28 @@
 </template>
 
 <script>
-import Available from "../components/Available.vue";
 import NavAdmin from "../components/NavAdmin.vue";
-import Onhold from "../components/Onhold.vue";
-import Sold from "../components/Sold.vue";
 import NavAdminDesktop from "../components/NavAdminDesktop.vue";
 import FooterContact from "../components/FooterContact.vue";
 import cookies from "vue-cookies";
+import Status from '../components/Status.vue';
 
 export default {
   components: {
-    Available,
     NavAdmin,
-    Onhold,
-    Sold,
     NavAdminDesktop,
     FooterContact,
+    Status,
   },
   data() {
     return {
       status: "available",
     };
+  },
+  props: {
+    Status: {
+      type: String,
+    },
   },
   methods: {
     showEnglish: function () {

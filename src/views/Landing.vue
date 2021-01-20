@@ -23,9 +23,11 @@ import Slider from "../components/Slider.vue"
 <style lang="scss" scoped>
 #landing {
     width: 100%;
+    min-height: 100vh;
     display: grid;
     justify-items: center;
     align-items: center;
+    background-color: black;
 
     #title-1 {
         position: absolute;
@@ -39,7 +41,7 @@ import Slider from "../components/Slider.vue"
     }
     
     .slider {
-        width: 120%;
+        width: 100%;
     }
 
     #title-2 {
@@ -47,19 +49,18 @@ import Slider from "../components/Slider.vue"
         z-index: 100;
         color: white;
         transform: rotate(-90deg);
-        right: -14vw;
+        right: -25vw;
         bottom: 13vh;
         text-shadow: 1px 1px 1px black;
     }
 }
 
 @media only screen and (min-width: 600px) {
-
     #landing {
 
     #title-1 {
         position: absolute;
-        top: 13vh;
+        top: 14vh;
         z-index: 100;
         color: white;
         transform: rotate(90deg);
@@ -69,7 +70,7 @@ import Slider from "../components/Slider.vue"
     }
     
     .slider {
-        width: 120%;
+        width: 100%;
     }
 
     #title-2 {
@@ -78,8 +79,8 @@ import Slider from "../components/Slider.vue"
         color: white;
         transform: rotate(-90deg);
         font-size: 3em;
-        right: -7.5vw;
-        bottom: 13vh;
+        right: -18vw;
+        bottom: 14vh;
         text-shadow: 1px 1px 1px black;
     }
 }
@@ -90,9 +91,9 @@ import Slider from "../components/Slider.vue"
 
     #title-1 {
         position: fixed;
-        top: 90vh;
+        top: 88vh;
         z-index: 100;
-        color: darkgrey;
+        color: white;
         transform: rotate(0deg);
         font-size: 3rem;
         left: 0vw;
@@ -108,11 +109,11 @@ import Slider from "../components/Slider.vue"
     #title-2 {
         position: fixed;
         z-index: 100;
-        color: darkgrey;
+        color: white;
         transform: rotate(0deg);
         font-size: 3em;
         right: 0;
-        top: 0;
+        top: 1vh;
         text-shadow: 3px 3px 3px black;
         letter-spacing: 5px;
     }

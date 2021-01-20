@@ -111,16 +111,17 @@ export default {
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
+  padding-top: 1em;
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
 
     &:hover,
     &:active {
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       cursor: pointer;
     }
   }
@@ -132,6 +133,7 @@ export default {
   display: grid;
   justify-items: center;
   align-items: center;
+  padding-top: 1em;
 
   a {
     font-size: 0.8rem;
@@ -193,13 +195,13 @@ export default {
 @media only screen and (min-width: 600px) {
   #icon-container {
     img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
 
       &:hover,
       &:active {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
       }
     }
   }
@@ -242,6 +244,7 @@ export default {
   }
 
   #text-container {
+    height: 10vh;
     a {
       font-size: 1.2rem;
     }
@@ -252,8 +255,9 @@ export default {
   }
 
   #container-2 {
+    height: 10vh;
     p {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
 

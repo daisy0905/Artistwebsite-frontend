@@ -10,7 +10,7 @@
     </div>
     <div id="content">
       <div id="unit-2">
-        <img id="image" src="../assets/portrait.jpg" alt="" />
+        <img id="image" src="../assets/portrait.jpg" alt="artist's portrait" />
       </div>
       <div class="unit-3">
         <h2>
@@ -55,21 +55,16 @@ export default {
     FooterSection,
   },
   methods: {
-    imgeMove: function () {
-      document.getElementById("image").style.position = "absolute";
-      document.getElementById("image").style.left = "5vw";
-      document.getElementById("image").style.width = "150px";
-    },
     showEnglish: function () {
       cookies.remove("chinese");
       this.$store.commit("updateLanguage", false);
-      document.getElementById("english").style.color = "red";
+      document.getElementById("english").style.color = "#bb9457ff";
       document.getElementById("chinese").style.color = "black";
     },
     showChinese: function () {
       cookies.set("chinese", true);
       this.$store.commit("updateLanguage", true);
-      document.getElementById("chinese").style.color = "red";
+      document.getElementById("chinese").style.color = "#bb9457ff";
       document.getElementById("english").style.color = "black";
     },
   },
@@ -110,8 +105,12 @@ export default {
 
   h4 {
     font-weight: bold;
-
     font-size: 0.8rem;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 }
 
@@ -121,7 +120,13 @@ export default {
   display: grid;
   justify-items: center;
   align-items: center;
-  margin-top: 1em;
+  margin-top: 0.5em;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background: url(../assets/bio_background_mobile.jpg);
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 2em;
 
   #unit-2 {
     height: 40vh;
@@ -129,15 +134,17 @@ export default {
     display: grid;
     justify-items: center;
     align-items: center;
+    margin-top: 4em;
 
     img {
       width: 200px;
-      box-shadow: 8px 8px 2px darkgrey;
+      box-shadow: 8px 8px 2px white;
+      opacity: 0.9;
     }
   }
 
   .unit-3 {
-    min-height: 10vh;
+    min-height: 40vh;
     width: 100%;
     display: grid;
     justify-items: center;
@@ -146,23 +153,24 @@ export default {
 
     h2 {
       font-weight: bold;
-
-      font-size: 1rem;
+      font-size: 1.5rem;
+      color: white;
     }
 
     h3 {
       font-size: 1rem;
       margin-top: 0.5em;
+      color: white;
     }
 
     p {
       width: 70%;
       min-height: 40vh;
-
       font-size: 0.8rem;
       text-align: justify;
       line-height: 1.5em;
       margin: 1em 0 1em 0;
+      color: white;
     }
   }
 }
@@ -186,8 +194,10 @@ export default {
   }
 
   #content {
-    min-height: 30vh;
+    min-height: 92vh;
+    width: 100%;
     margin-top: 1em;
+    background: url(../assets/bio_background.jpg);
 
     #unit-2 {
       height: 40vh;
@@ -195,27 +205,29 @@ export default {
       display: grid;
       justify-items: center;
       align-items: center;
+      padding-top: 3em;
 
       img {
-        width: 300px;
+        width: 350px;
       }
     }
 
     .unit-3 {
-      margin-top: 1em;
+      margin-top: 7em;
 
       h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
 
       h3 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
 
       p {
         min-height: 30vh;
         width: 70%;
         font-size: 1.2rem;
+        padding-bottom: 2em;
       }
     }
   }
@@ -243,7 +255,7 @@ export default {
   }
 
   #en-ch {
-    height: 7vh;
+    height: 13vh;
     width: 100%;
     display: grid;
     justify-items: center;
@@ -260,13 +272,12 @@ export default {
 
   #content {
     height: 100vh;
-    margin-top: 1em;
+    margin-top: 0.3em;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 0;
+    grid-template-columns: 0.6fr 1fr;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background: url(../assets/background-image-2.jpg);
+    background: url(../assets/bio_background_desktop.jpg);
     background-size: cover;
     background-position: center;
 
@@ -275,7 +286,8 @@ export default {
       width: 100%;
       display: grid;
       justify-items: center;
-      align-items: center;
+      align-items: start;
+      padding: 3em 0 0 3em;
 
       img {
         height: 350px;
@@ -286,15 +298,15 @@ export default {
     }
 
     .unit-3 {
-      margin-top: 3em;
-
+      margin-top: 0;
+      width: 100%;
+      padding-top: 1em;
       h2 {
         font-size: 1.5rem;
       }
 
       h3 {
-        width: 70%;
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
 
       p {

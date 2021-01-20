@@ -1,5 +1,5 @@
 <template>
-  <div class="onhold-list">
+  <div class="available-list">
     <div v-for="image in images" class="item" :key="image.id">
       <img :src="image.url" alt="" />
       <h4>{{ image.name }}</h4>
@@ -9,23 +9,48 @@
 
 <script>
 export default {
-  name: "onhold",
-  computed: {
-    images() {
-      console.log(this.$store.getters.getOnhold);
-      return this.$store.getters.getOnhold;
+  name: "available",
+  props: {
+    Status: {
+      type: String,
     },
   },
+  data() {
+    return {
+      images: this.$store.getters.getAvailable,
+    };
+  },
+  watch: {
+    Status(newValue) {
+      console.log(newValue);
+      if (newValue == "available") {
+        this.images = this.$store.getters.getAvailable;
+        console.log(this.images);
+      } else if (newValue == "onhold") {
+        this.images = this.$store.getters.getOnhold;
+        console.log(this.images);
+      } else if (newValue == "sold") {
+        this.images = this.$store.getters.getSold;
+        console.log(this.images);
+      }
+    },
+  },
+  // computed: {
+  //     images() {
+  //         console.log(this.$store.getters.getAvailable);
+  //         return this.$store.getters.getAvailable;
+  //     }
+  // },
 };
 </script>
 
 <style lang="scss" scoped>
-.onhold-list {
-  min-height: 100vh;
+.available-list {
+  min-height: 50vh;
   width: 100%;
   display: grid;
   justify-items: center;
-  align-items: start;
+  align-items: center;
 }
 
 .item {

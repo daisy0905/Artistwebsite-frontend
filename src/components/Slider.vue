@@ -3,7 +3,7 @@
     <div id="preview">
       <div></div>
       <a class="icon" @click="prev" href="#">&#10094;</a>
-      <h3>PREVIEW</h3>
+      <h2>PREVIEW</h2>
       <a class="icon" @click="next" href="#">&#10095;</a>
       <div></div>
     </div>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="text-box">
-      <h4 class="btn btn-white btn- animate" @click="goToHome">ENTER</h4>
+      <h3 class="btn btn-white btn- animate" @click="goToHome">ENTER</h3>
     </div>
   </div>
 </template>
@@ -94,7 +94,7 @@ export default {
     grid-template-columns: 25% 10% 30% 10% 25%;
     z-index: 100;
     position: fixed;
-    top: 0;
+    top: -1vh;
     opacity: 0.6;
 
     .icon {
@@ -104,7 +104,7 @@ export default {
       text-shadow: 1px 1px 1px black;
     }
 
-    h3 {
+    h2 {
       font-weight: bold;
       font-size: 1rem;
       letter-spacing: 5px;
@@ -119,6 +119,7 @@ export default {
     justify-items: center;
     align-items: center;
     grid-template-rows: 1fr 1fr;
+    row-gap: 0.5em;
 
     .color {
       width: 100%;
@@ -135,17 +136,16 @@ export default {
   }
 
   .text-box {
-    margin-left: 44vw;
-    margin-top: 42vh;
     position: fixed;
-    bottom: 5vh;
+    bottom: 2vh;
+    left: 35vw;
     opacity: 0.6;
 
-    h4 {
+    h3 {
       width: 30vw;
-      height: 5vh;
-      padding: 10px 30px;
-      border-radius: 100px;
+      height: 4vh;
+      padding: 8px 30px;
+      border-radius: 0.5em;
       font-size: 1rem;
     }
   }
@@ -181,7 +181,7 @@ export default {
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 0.5em;
     position: absolute;
     top: 0;
     left: 0;
@@ -229,8 +229,8 @@ export default {
         text-shadow: 2px 2px 1px black;
       }
 
-      h3 {
-        font-size: 1.5rem;
+      h2 {
+        font-size: 1.8rem;
         letter-spacing: 10px;
         text-shadow: 2px 2px 1px black;
       }
@@ -241,8 +241,8 @@ export default {
     }
 
     .text-box {
-      h4 {
-        padding: 13px 30px;
+      h3 {
+        padding: 9px 25px;
         font-size: 1.5rem;
       }
     }
@@ -260,8 +260,8 @@ export default {
         text-shadow: 2px 2px 1px black;
       }
 
-      h3 {
-        font-size: 1.2rem;
+      h2 {
+        font-size: 1.5rem;
         letter-spacing: 10px;
         text-shadow: 2px 2px 1px black;
       }
@@ -307,24 +307,21 @@ export default {
     }
 
     .text-box {
-      margin-left: 40vw;
-      margin-top: 42vh;
       position: fixed;
-      bottom: 5vh;
+      bottom: 2vh;
+      left: 45vw;
       opacity: 0.8;
 
-      h4 {
-        width: 20vw;
-        height: 5vh;
-        padding: 6px 30px;
-        border-radius: 100px;
-        font-size: 1.5rem;
+      h3 {
+        width: 10vw;
+        height: 7vh;
+        padding: 3px 25px;
+        font-size: 1.2rem;
       }
     }
 
     .btn-white {
       background-color: lightgrey;
-      color: #777;
       border: 3px solid white;
     }
   }

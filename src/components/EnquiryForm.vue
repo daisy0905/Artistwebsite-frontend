@@ -1,14 +1,11 @@
 <template>
   <div id="enquiry">
     <div id="form" v-if="display == false">
-      <div @click="open" class="close-icon">
-        <img src="../assets/close-icon.png" alt="close icon" />
-      </div>
-      <h4>
+      <h3>
         <span v-if="this.$store.getters.languageGet"
-          >请留下您的信息，我们将尽快回复，谢谢</span
+          >请留下您的信息，我们将尽快回复，谢谢!</span
         ><span v-else>Please leave your message, we will reply ASAP!</span>
-      </h4>
+      </h3>
       <h4>
         <span v-if="this.$store.getters.languageGet">姓</span
         ><span v-else>Last Name</span>
@@ -16,7 +13,7 @@
       <input type="text" class="input" v-model="lastname" />
       <h4>
         <span v-if="this.$store.getters.languageGet">名</span
-        ><span v-else>姓</span>
+        ><span v-else>First Name</span>
       </h4>
       <input type="text" class="input" v-model="firstname" />
       <h4>
@@ -34,10 +31,10 @@
         ><span v-else>Message</span>
       </h4>
       <textarea id="message-input" v-model="message"></textarea>
-      <button @click="postEnquiry">
+      <h4 class="button" @click="postEnquiry">
         <span v-if="this.$store.getters.languageGet">提交</span
         ><span v-else>Submit</span>
-      </button>
+      </h4>
       <p>{{ enquiryStatus }}</p>
     </div>
   </div>
@@ -100,8 +97,7 @@ export default {
 
 <style lang="scss" scoped>
 #enquiry {
-  height: 62vh;
-  width: 30%;
+  width: 90%;
   display: grid;
   justify-items: center;
   align-items: start;
@@ -109,28 +105,25 @@ export default {
 }
 
 #form {
-  width: 90%;
-  height: 100vh;
+  width: 100%;
   display: grid;
   justify-items: center;
   align-items: center;
   margin: 0.5em;
   row-gap: 0.5vh;
-  background-color: lightgrey;
-  padding-bottom: 2em;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background: url(../assets/bio_background.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 1em 0 2em 0;
 
-  .close-icon {
-    width: 100%;
-    height: 3vh;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    margin-right: 1em;
-
-    img {
-      width: 20px;
-      height: 20px;
-    }
+  h3 {
+    width: 90%;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    padding-top: 0.8em;
   }
 
   h4 {
@@ -138,6 +131,7 @@ export default {
     font-weight: bold;
     font-size: 0.8rem;
     margin: 0.1em;
+    color: white;
   }
 
   p {
@@ -145,6 +139,7 @@ export default {
     font-size: 0.7rem;
     text-align: center;
     margin: 0.1em;
+    color: white;
   }
 
   .input {
@@ -163,7 +158,7 @@ export default {
     font-size: 0.8rem;
   }
 
-  button {
+  .button {
     width: 40%;
     height: 5vh;
     font-size: 0.8rem;
@@ -171,6 +166,120 @@ export default {
     box-shadow: 1px 1px 2px grey;
     font-weight: bold;
     margin-top: 0.5em;
+    background-color: white;
+    color: black;
+    padding-top: 0.5em;
+
+    &:hover, &:active {
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #enquiry {
+    width: 90%;
+    min-height: 80vh;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    row-gap: 0.5vh;
+  }
+
+  #form {
+    width: 100%;
+    min-height: 80vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin: 0.5em;
+    row-gap: 0.5vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background: url(../assets/bio_background_tablet.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 1em 0 2em 0;
+
+    h3 {
+      font-size: 1.5rem;
+      padding-top: 2em;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      padding-bottom: 1em;
+    }
+
+    .input {
+      width: 60%;
+    }
+
+    #message-input {
+      width: 60%;
+      font-size: 1rem;
+    }
+
+    .button {
+      width: 20%;
+      height: 3vh;
+      font-size: 1rem;
+      margin-top: 0.2em;
+      padding-top: 0.2em;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #enquiry {
+    width: 32%;
+    min-height: 90vh;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    row-gap: 0.5vh;
+  }
+
+  #form {
+    padding: 1.2em 0 2em 0;
+
+    h3 {
+      font-size: 1rem;
+      padding: 1em 0 0 0;
+      width: 70%;
+      margin-top: 1em;
+    }
+
+    h4 {
+      font-size: 0.8rem;
+      margin: 0.2em;
+    }
+
+    p {
+      font-size: 1rem;
+      padding-bottom: 1em;
+    }
+
+    .input {
+      width: 60%;
+    }
+
+    #message-input {
+      width: 60%;
+      font-size: 1rem;
+    }
+
+    .button {
+      width: 20%;
+      height: 5vh;
+      font-size: 1rem;
+      margin-top: 0.2em;
+      padding-top: 0.2em;
+    }
   }
 }
 </style>

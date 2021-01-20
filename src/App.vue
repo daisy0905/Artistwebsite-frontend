@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap');
 * {
   scroll-behavior: smooth;
   margin: 0;
@@ -13,7 +14,7 @@
 }
 
 #app {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'IM Fell DW Pica', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

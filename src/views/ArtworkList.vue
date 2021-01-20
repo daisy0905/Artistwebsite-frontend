@@ -11,13 +11,18 @@
       <h3>KEMIN TONG</h3>
       <div></div>
     </div>
-    <searched-artword-card
-      class="artworks"
-      v-for="art in searchArtworks"
-      :key="art.id"
-      :art="art"
-    ></searched-artword-card>
-    <footer-section></footer-section>
+    <div id="artwork-container" v-if="this.searchArtworks.length == 0">
+      <h2>No Artwork Found!</h2>
+    </div>
+    <div v-else id="artwork-container-2">
+      <searched-artword-card
+        class="artworks"
+        v-for="art in searchArtworks"
+        :key="art.id"
+        :art="art"
+      ></searched-artword-card>
+    </div>
+    <footer-section id="footer"></footer-section>
     <div id="go-to-top">
       <a href="#artwork-list">TO TOP</a>
     </div>
@@ -78,7 +83,7 @@ export default {
   width: 100%;
   display: grid;
   justify-items: center;
-  align-items: center;
+  align-items: start;
   row-gap: 0.5vh;
 }
 
@@ -112,8 +117,20 @@ export default {
   }
 }
 
+#artwork-container {
+  width: 100%;
+  min-height: 70vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .artworks {
-  min-height: 50vh;
+  min-height: 70vh;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  align-content: start;
 }
 
 #go-to-top {
@@ -146,6 +163,11 @@ export default {
     }
   }
 }
+
+#id {
+  position: fixed;
+  bottom: 0;
+}
 @media only screen and (min-width: 600px) {
   #header {
     .icon {
@@ -177,6 +199,11 @@ export default {
 }
 
 @media only screen and (min-width: 1024px) {
+  #artwork-container-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   #go-to-top {
     bottom: 22vh;
     right: 1vw;
