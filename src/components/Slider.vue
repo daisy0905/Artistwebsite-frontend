@@ -143,7 +143,7 @@ export default {
 
     h3 {
       width: 30vw;
-      height: 4vh;
+      height: 2em;
       padding: 8px 30px;
       border-radius: 0.5em;
       font-size: 1rem;
@@ -309,12 +309,12 @@ export default {
     .text-box {
       position: fixed;
       bottom: 2vh;
-      left: 45vw;
+      left: 43vw;
       opacity: 0.8;
 
       h3 {
-        width: 10vw;
-        height: 7vh;
+        width: 13vw;
+        height: 2em;
         padding: 3px 25px;
         font-size: 1.2rem;
       }

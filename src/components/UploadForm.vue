@@ -50,7 +50,6 @@
     <upload-image class="upload-image" @newImage="newImage"></upload-image>
     <div v-if="this.url != ''" class="preview">
       <img :src="url" alt="" />
-      <!-- <img src="" alt=""> -->
     </div>
     <div class="submit-btn">
       <div></div>
@@ -133,7 +132,7 @@ export default {
 
   h3 {
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: left;
     letter-spacing: 2px;
     margin-left: 2em;
@@ -142,7 +141,7 @@ export default {
   .input {
     width: 80%;
     height: 4vh;
-    background-color: #e1e8ed;
+    background-color: white;
     border: 1px solid #aab8c2;
     margin: 0 0 1em 0;
     border-bottom: 2px solid darkgrey;

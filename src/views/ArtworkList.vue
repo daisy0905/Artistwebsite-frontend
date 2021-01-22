@@ -11,8 +11,9 @@
       <h3>KEMIN TONG</h3>
       <div></div>
     </div>
-    <div id="artwork-container" v-if="this.searchArtworks.length == 0">
-      <h2>No Artwork Found!</h2>
+    <div id="artwork-container-1" v-if="this.searchArtworks.length == 0">
+      <h2>No Artwork Matches Your Search, Please Try Again!</h2>
+      <h2>没有检索到相关画作，请重试！</h2>
     </div>
     <div v-else id="artwork-container-2">
       <searched-artword-card
@@ -88,7 +89,7 @@ export default {
 }
 
 #header {
-  height: 8vh;
+  height: 3em;
   width: 100%;
   display: grid;
   grid-template-columns: 10% 80% 10%;
@@ -106,38 +107,66 @@ export default {
     img {
       height: 20px;
       object-fit: cover;
+
+      &:hover, &:active {
+        cursor: pointer;
+      }
     }
   }
 
   h3 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     letter-spacing: 5px;
   }
 }
 
-#artwork-container {
+#artwork-container-1 {
   width: 100%;
-  min-height: 70vh;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-}
-
-.artworks {
   min-height: 70vh;
   display: grid;
   justify-items: center;
   align-items: start;
   align-content: start;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background: url(../assets/bio_background_mobile.jpg);
+  background-size: cover;
+  background-position: center;
+  padding-top: 5em;
+
+  h2 {
+    width: 70%;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1em 0 1em 0;
+  }
+}
+
+#artwork-container-2 {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  align-content: start;
+  row-gap: 1em;
+  margin-bottom: 2em;
+
+  .artworks {
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    align-content: start;
+  }
 }
 
 #go-to-top {
   position: fixed;
-  bottom: 22vh;
-  right: 2.5vw;
-  width: 4vw;
+  bottom: 30vh;
+  right: 0;
+  width: 10vw;
   height: 5vh;
   display: grid;
   align-items: center;
@@ -170,6 +199,7 @@ export default {
 }
 @media only screen and (min-width: 600px) {
   #header {
+    height: 4.5em;
     .icon {
       img {
         height: 30px;
@@ -187,7 +217,6 @@ export default {
   }
 
   #go-to-top {
-    bottom: 22vh;
     right: 0;
     width: 5vw;
     height: 10vh;
@@ -205,8 +234,7 @@ export default {
   }
 
   #go-to-top {
-    bottom: 22vh;
-    right: 1vw;
+    bottom: 35vh;
     width: 5vw;
     height: 10vh;
 

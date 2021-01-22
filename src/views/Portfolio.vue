@@ -1,6 +1,6 @@
 <template>
   <div id="portfolio">
-    <navigation id="nav-en"></navigation>
+    <navigation id="nav"></navigation>
     <nav-desktop id="nav-desktop"></nav-desktop>
     <div id="en-ch">
       <div></div>
@@ -90,8 +90,8 @@ export default {
   align-items: start;
 }
 
-#nav-en {
-  height: 8vh;
+#nav {
+  height: 3em;
   width: 100%;
 }
 
@@ -100,7 +100,7 @@ export default {
 }
 
 #en-ch {
-  height: 5vh;
+  height: 2em;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -176,11 +176,16 @@ export default {
 }
 
 @media only screen and (min-width: 600px) {
+  #nav {
+    height: 4.5em;
+  }
+
   #nav-desktop {
     display: none;
   }
 
   #en-ch {
+    height: 3em;
     h4 {
       font-size: 1.2rem;
     }
@@ -217,7 +222,7 @@ export default {
     align-items: start;
   }
 
-  #nav-en {
+  #nav {
     display: none;
   }
 
@@ -230,7 +235,7 @@ export default {
   }
 
   #en-ch {
-    height: 13vh;
+    height: 5em;
     width: 100%;
     display: grid;
     justify-items: center;

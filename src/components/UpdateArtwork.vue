@@ -220,7 +220,7 @@ h3 {
 
     .input {
       width: 50%;
-      height: 2.5vh;
+      height: 4vh;
       font-size: 1rem;
     }
   }

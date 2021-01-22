@@ -1,6 +1,6 @@
 <template>
   <div id="artwork">
-    <navigation id="nav-en"></navigation>
+    <navigation id="nav"></navigation>
     <nav-desktop id="nav-desktop"></nav-desktop>
     <div id="en-ch">
       <div></div>
@@ -144,21 +144,7 @@ export default {
     },
     closeDesktop: function () {
       document.getElementById("alert-desktop").style.display = "none";
-    },
-    English: function () {
-      this.display = true;
-      cookies.remove("chinese");
-      this.$store.commit("updateLanguage", false);
-      document.getElementById("english-show").style.color = "#bb9457ff";
-      document.getElementById("chinese-show").style.color = "black";
-    },
-    Chinese: function () {
-      this.display = false;
-      cookies.set("chinese", true);
-      this.$store.commit("updateLanguage", true);
-      document.getElementById("chinese-show").style.color = "#bb9457ff";
-      document.getElementById("english-show").style.color = "black";
-    },
+    }
   },
   mounted: function () {
     if (this.$store.state.artwork.length == 0) {
@@ -167,7 +153,7 @@ export default {
     setTimeout(() => {
       this.statusCheck();
     }, 500),
-      this.showEnglish();
+    this.showEnglish();
   },
   computed: {
     name() {
@@ -212,8 +198,8 @@ export default {
   position: relative;
 }
 
-#nav-en {
-  height: 8vh;
+#nav {
+  height: 3em;
   width: 100%;
 }
 
@@ -222,7 +208,7 @@ export default {
 }
 
 #en-ch {
-  min-height: 5vh;
+  height: 2em;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -256,7 +242,7 @@ export default {
     background-color: white;
     text-align: center;
     color: grey;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   img {
@@ -342,6 +328,8 @@ export default {
         box-shadow: 1px 1px 2px grey;
         font-weight: bold;
         padding-top: 0.5em;
+        background-color: white;
+        color: black;
 
         &:hover,
         &:active {
@@ -358,6 +346,8 @@ export default {
         font-weight: bold;
         text-decoration: line-through;
         padding-top: 0.5em;
+        background-color: white;
+        color: black;
       }
 
       #alert {
@@ -392,20 +382,17 @@ export default {
   }
 }
 
-.enquiry-form {
-  width: 90%;
-  min-height: 50vh;
-  position: absolute;
-  top: 19vh;
-  left: 5vw;
-}
-
 @media only screen and (min-width: 600px) {
+  #nav {
+    height: 4.5em;
+  }
+
   #nav-desktop {
     display: none;
   }
 
   #en-ch {
+    height: 3em;
     h4 {
       font-size: 1.2rem;
     }
@@ -472,18 +459,10 @@ export default {
       }
     }
   }
-
-  .enquiry-form {
-    width: 90%;
-    min-height: 70vh;
-    position: absolute;
-    top: 19vh;
-    left: 5vw;
-  }
 }
 
 @media only screen and (min-width: 1024px) {
-  #nav-en {
+  #nav {
     display: none;
   }
 
@@ -513,7 +492,7 @@ export default {
 
   #search-bar {
     height: 10vh;
-    grid-template-columns: 5% 45% 10% 50%;
+    grid-template-columns: 3% 30% 10% 57%;
     margin: 0 1em 1em 1em;
 
     .search {
@@ -522,25 +501,37 @@ export default {
   }
 
   #content-container {
+    min-height: 40vh;
     grid-template-columns: 1.5fr 1fr;
     margin-bottom: 2em;
+    position: relative;
+
+    #image-container {
+      height: 100%;
+    }
 
     #text-container {
+      height: 100%;
+      margin-top: 0;
       
       #description {
-        min-height: 40vh;
+        // margin-bottom: 2em;
         h3 {
           font-size: 1.2rem;
         }
 
         p {
           font-size: 1.2rem;
+          margin-top: 1em;
         }
       }
 
       #button {
-        width: 35%;
+        width: 15%;
         min-height: 50vh;
+        position: absolute;
+        bottom: 0;
+        right: 13vw;
 
         p {
           font-size: 1.2rem;
@@ -570,12 +561,6 @@ export default {
         }
       }
     }
-  }
-
-  .enquiry-form {
-    position: absolute;
-    top: 40vh;
-    left: 30vw;
   }
 }
 </style>

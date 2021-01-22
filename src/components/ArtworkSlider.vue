@@ -162,6 +162,7 @@ export default {
 @media only screen and (min-width: 600px) {
   .container {
     height: 60vh;
+    margin-top: 0.5em;
     .slider-icon {
       grid-template-columns: 45% 10% 45%;
 

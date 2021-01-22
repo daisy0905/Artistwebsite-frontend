@@ -18,59 +18,119 @@
         />
       </div>
     </div>
-    <div v-if="display == false" id="nav-bar">
-      <div id="nav-unit-1">
-        <div></div>
-        <h4 :style="home" @click="goToHome">
-          <span v-if="this.$store.getters.languageGet">首页</span
-          ><span v-else>HOME</span>
-        </h4>
-        <h4 :style="bio" @click="goToBio">
-          <span v-if="this.$store.getters.languageGet">个人简介</span
-          ><span v-else>BIO</span>
-        </h4>
-        <h4 :style="portfolio" @click="goToPortfolio">
-          <span v-if="this.$store.getters.languageGet">作品集</span
-          ><span v-else>PORTFOLIO</span>
-        </h4>
-        <h4 :style="contact" @click="goToContact">
-          <span v-if="this.$store.getters.languageGet">与我联系</span
-          ><span v-else>CONTACT</span>
-        </h4>
-        <div></div>
-      </div>
-      <div id="nav-unit-2">
-        <h4 id="login-btn" @click="showInput">
-          <span v-if="this.$store.getters.languageGet">管理员登录</span
-          ><span v-else>admin login</span>
-        </h4>
-        <div v-if="show == false" id="login">
-          <h5>
-            <span v-if="this.$store.getters.languageGet">用户名</span
-            ><span v-else>Username</span>
-          </h5>
-          <input
-            type="text"
-            id="username-input"
-            class="input"
-            v-model="username"
-          />
-          <h5>
-            <span v-if="this.$store.getters.languageGet">密码</span
-            ><span v-else>Password</span>
-          </h5>
-          <input
-            type="password"
-            id="password-input"
-            class="input"
-            v-model="password"
-          />
-          <h4 @click="login">
-            <span v-if="this.$store.getters.languageGet">登录</span
-            ><span v-else>Log In</span>
-          </h4>
-          <p>{{ loginStatus }}</p>
+    <div v-if="nav">
+      <div v-if="display == false" class="nav-bar">
+        <div class="nav-unit-1">
           <div></div>
+          <h4 :style="artworkoverview" @click="goToArtworkOverview">
+            <span v-if="this.$store.getters.languageGet">作品总览</span
+            ><span v-else>ARTWORK OVERVIEW</span>
+          </h4>
+          <h4 :style="artworkstatus" @click="goToArtworkStatus">
+            <span v-if="this.$store.getters.languageGet">作品状态</span
+            ><span v-else>ARTWORK STATUS</span>
+          </h4>
+          <h4 :style="enquiry" @click="goToEnquiry">
+            <span v-if="this.$store.getters.languageGet">留言总览</span
+            ><span v-else>ENQUIRY REVIEW</span>
+          </h4>
+          <h4 :style="visitors" @click="goToVisitors">
+            <span v-if="this.$store.getters.languageGet">访客清单</span
+            ><span v-else>VISITOR LIST</span>
+          </h4>
+          <div></div>
+        </div>
+        <div class="nav-unit-2">
+          <h4 class="login-btn" @click="showInput">
+            <span v-if="this.$store.getters.languageGet">管理员退出</span
+            ><span v-else>admin logout</span>
+          </h4>
+          <div v-if="show == false" class="login">
+            <h5>
+              <span v-if="this.$store.getters.languageGet">用户名</span
+              ><span v-else>Username</span>
+            </h5>
+            <input
+              type="text"
+              id="username-input"
+              class="input"
+              v-model="username"
+            />
+            <h5>
+              <span v-if="this.$store.getters.languageGet">密码</span
+              ><span v-else>Password</span>
+            </h5>
+            <input
+              type="password"
+              id="password-input"
+              class="input"
+              v-model="password"
+            />
+            <h4 @click="logout">
+              <span v-if="this.$store.getters.languageGet">退出</span
+              ><span v-else>Log Out</span>
+            </h4>
+            <p>{{ logoutStatus }}</p>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div v-if="nav == undefined">
+      <div v-if="display == false" class="nav-bar">
+        <div class="nav-unit-1">
+          <div></div>
+          <h4 :style="home" @click="goToHome">
+            <span v-if="this.$store.getters.languageGet">首页</span
+            ><span v-else>HOME</span>
+          </h4>
+          <h4 :style="bio" @click="goToBio">
+            <span v-if="this.$store.getters.languageGet">个人简介</span
+            ><span v-else>BIO</span>
+          </h4>
+          <h4 :style="portfolio" @click="goToPortfolio">
+            <span v-if="this.$store.getters.languageGet">作品集</span
+            ><span v-else>PORTFOLIO</span>
+          </h4>
+          <h4 :style="contact" @click="goToContact">
+            <span v-if="this.$store.getters.languageGet">与我联系</span
+            ><span v-else>CONTACT</span>
+          </h4>
+          <div></div>
+        </div>
+        <div class="nav-unit-2">
+          <h4 class="login-btn" @click="showInput">
+            <span v-if="this.$store.getters.languageGet">管理员登录</span
+            ><span v-else>admin login</span>
+          </h4>
+          <div v-if="show == false" class="login">
+            <h5>
+              <span v-if="this.$store.getters.languageGet">用户名</span
+              ><span v-else>Username</span>
+            </h5>
+            <input
+              type="text"
+              id="username-input"
+              class="input"
+              v-model="username"
+            />
+            <h5>
+              <span v-if="this.$store.getters.languageGet">密码</span
+              ><span v-else>Password</span>
+            </h5>
+            <input
+              type="password"
+              id="password-input"
+              class="input"
+              v-model="password"
+            />
+            <h4 @click="login">
+              <span v-if="this.$store.getters.languageGet">登录</span
+              ><span v-else>Log In</span>
+            </h4>
+            <p>{{ loginStatus }}</p>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -78,6 +138,7 @@
 </template>
 
 <script>
+import cookies from "vue-cookies";
 export default {
   name: "navigation",
   data() {
@@ -95,6 +156,12 @@ export default {
       bio: {},
       portfolio: {},
       contact: {},
+      artworkoverview: {},
+      artworkstatus: {},
+      enquiry: {},
+      visitors: {},
+      nav: cookies.get("login"),
+      logoutStatus: "",
     };
   },
   methods: {
@@ -130,12 +197,33 @@ export default {
         this.$router.push("/contact");
       }, 1000);
     },
+    goToArtworkOverview: function () {
+      setTimeout(() => {
+        this.$router.push("/artworkoverview");
+      }, 1000);
+    },
+    goToArtworkStatus: function () {
+      setTimeout(() => {
+        this.$router.push("/artworkstatus");
+      }, 1000);
+    },
+    goToEnquiry: function () {
+      setTimeout(() => {
+        this.$router.push("/enquiryreview");
+      }, 1000);
+    },
+    goToVisitors: function () {
+      setTimeout(() => {
+        this.$router.push("/visitors");
+      }, 1000);
+    },
     showInput: function () {
       this.show = !this.show;
     },
     login: function () {
       if (this.username == "test" && this.password == "test123") {
         this.loginStatus = "Login Success!";
+        cookies.set("login", true);
         setTimeout(() => {
           this.$router.push("/artworkoverview");
         }, 1000);
@@ -143,9 +231,20 @@ export default {
         this.loginStatus = "Login Failed!";
       }
     },
+    logout: function () {
+      if (this.username == "test" && this.password == "test123") {
+        this.logoutStatus = "Log Out Success!";
+        cookies.remove("login");
+        setTimeout(() => {
+          this.$router.push("/");
+        }, 1000);
+      } else {
+        this.logoutStatus = "Log Out Failed!";
+      }
+    },
   },
   mounted() {
-      if (this.$router.history.current.path == "/home") {
+    if (this.$router.history.current.path == "/home") {
       this.home = this.active;
     } else if (this.$router.history.current.path == "/bio") {
       this.bio = this.active;
@@ -153,6 +252,14 @@ export default {
       this.portfolio = this.active;
     } else if (this.$router.history.current.path == "/contact") {
       this.contact = this.active;
+    } else if (this.$router.history.current.path == "/artworkoverview") {
+      this.artworkoverview = this.active;
+    } else if (this.$router.history.current.path == "/artworkstatus") {
+      this.artworkstatus = this.active;
+    } else if (this.$router.history.current.path == "/enquiryreview") {
+      this.enquiry = this.active;
+    } else if (this.$router.history.current.path == "/visitors") {
+      this.visitors = this.active;
     }
   },
 };
@@ -160,14 +267,11 @@ export default {
 
 <style lang="scss" scoped>
 #nav {
-  height: 8vh;
   width: 100%;
   display: grid;
   align-items: center;
   padding: 10px 0 0 0;
-  margin-bottom: 1em;
   z-index: 100;
-  margin-bottom: 0.5em;
 }
 
 #header {
@@ -197,111 +301,112 @@ export default {
     font-size: 1rem;
     letter-spacing: 0.5em;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       cursor: pointer;
     }
   }
 }
 
-#nav-bar {
-  min-height: 22vh;
+.nav-bar {
+  min-height: 24vh;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   justify-items: left;
-  align-items: left;
+  align-items: start;
   position: absolute;
-  top: 14vh;
+  top: 13vh;
+  left: 0;
   background-color: black;
   opacity: 0.8;
   z-index: 100;
+}
 
-  #nav-unit-1 {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    justify-items: left;
-    align-items: left;
-    row-gap: 1em;
+.nav-unit-1 {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  justify-items: left;
+  align-items: start;
+  row-gap: 1em;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-left: 2em;
+  color: white;
+  letter-spacing: 0.2em;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #bb9457ff;
+  }
+
+  &:active {
+    color: #bb9457ff;
+    border-bottom: 2px solid white;
+  }
+}
+
+.nav-unit-2 {
+  width: 100%;
+  height: 8vh;
+  display: grid;
+  justify-items: right;
+  align-items: start;
+  margin-top: 1em;
+}
+
+.login-btn {
+  width: 70%;
+  height: 3vh;
+  font-size: 0.8rem;
+  border: 1px solid white;
+  box-shadow: 1px 1px 2px grey;
+  font-weight: bold;
+  margin: 0 2em 0.5em 0;
+}
+
+.login {
+  width: 75%;
+  display: grid;
+  justify-items: right;
+  align-items: center;
+  margin-right: 1.6em;
+
+  h5 {
+    font-size: 0.6rem;
+    margin-bottom: 0.2em;
+    color: white;
+    font-weight: normal;
+  }
+
+  .input {
+    width: 75%;
+    height: 2.5vh;
+    background-color: none;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 0 0 0.5em 0;
+    text-align: center;
   }
 
   h4 {
-    font-weight: bold;
+    width: 75%;
+    height: 3vh;
     font-size: 0.8rem;
-    margin-left: 2em;
-    color: white;
-    letter-spacing: 0.2em;
-
-    &:hover {
-      cursor: pointer;
-      border-bottom: 2px solid #bb9457ff;
-    }
-
-    &:active {
-      color: #bb9457ff;
-      border-bottom: 2px solid white;
-    }
+    border: 1px solid grey;
+    box-shadow: none;
+    margin: 0.2em 0 0 0;
+    font-weight: normal;
   }
 
-  #nav-unit-2 {
-    width: 100%;
-    height: 8vh;
-    display: grid;
-    justify-items: right;
-    align-items: center;
-    margin-top: 1em;
-
-    #login-btn {
-      width: 55%;
-      height: 3vh;
-      font-size: 0.8rem;
-      border: 1px solid white;
-      box-shadow: 1px 1px 2px grey;
-      font-weight: bold;
-      margin: 0 2em 0.5em 0;
-    }
-
-    #login {
-      width: 75%;
-      display: grid;
-      justify-items: right;
-      align-items: center;
-      margin-right: 1.6em;
-
-      h5 {
-        font-size: 0.6rem;
-        margin-bottom: 0.2em;
-        color: white;
-        font-weight: normal;
-      }
-
-      .input {
-        width: 75%;
-        height: 2.5vh;
-        background-color: none;
-        border: none;
-        border-bottom: 1px solid black;
-        margin: 0 0 0.5em 0;
-        text-align: center;
-      }
-
-      h4 {
-        width: 75%;
-        height: 3vh;
-        font-size: 0.8rem;
-        border: 1px solid grey;
-        box-shadow: none;
-        margin: 0.2em 0 0 0;
-        font-weight: normal;
-      }
-
-      p {
-        font-size: 0.6rem;
-        margin: 0.5em 0 0.5em 0;
-        text-align: center;
-        color: white;
-      }
-    }
+  p {
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
   }
 }
 
@@ -324,36 +429,32 @@ export default {
     }
   }
 
-  #nav-bar {
-    top: 14vh;
+  h4 {
+    font-size: 1.2rem;
+  }
 
-    h2 {
+  .login-btn {
+    width: 45%;
+    font-size: 1.2rem;
+    margin: 0.8em 2em 0.5em 0;
+  }
+
+  .login {
+    h5 {
+      font-size: 1rem;
+    }
+
+    .input {
+      width: 60%;
+    }
+
+    h4 {
+      width: 60%;
       font-size: 1.2rem;
     }
 
-    #nav-unit-2 {
-      #login-btn {
-        width: 42%;
-        font-size: 1rem;
-        margin-right: 2.5em;
-      }
-
-      #login {
-        width: 60%;
-        margin-right: 2.5em;
-
-        h4 {
-          font-size: 1rem;
-        }
-
-        button {
-          font-size: 1rem;
-        }
-
-        p {
-          font-size: 1rem;
-        }
-      }
+    p {
+      font-size: 0.8rem;
     }
   }
 }

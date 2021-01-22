@@ -42,7 +42,7 @@
     <div id="container-2">
       <p @click="goToContact">
         <span v-if="this.$store.getters.languageGet"
-          >期待留下您的联系方式 ></span
+          >期待与您联系 ></span
         ><span v-else>Subscribe To Our Newsletter ></span>
       </p>
     </div>
@@ -168,6 +168,7 @@ export default {
     text-align: center;
     color: white;
     text-shadow: 1px 1px 1px black;
+    letter-spacing: 0.2em;
 
     &:hover,
     &:active {

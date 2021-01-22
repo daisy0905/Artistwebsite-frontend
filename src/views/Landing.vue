@@ -31,7 +31,7 @@ import Slider from "../components/Slider.vue"
 
     #title-1 {
         position: absolute;
-        top: 13vh;
+        top: 15vh;
         z-index: 100;
         color: white;
         transform: rotate(90deg);
@@ -50,7 +50,7 @@ import Slider from "../components/Slider.vue"
         color: white;
         transform: rotate(-90deg);
         right: -25vw;
-        bottom: 13vh;
+        bottom: 15vh;
         text-shadow: 1px 1px 1px black;
     }
 }
@@ -91,12 +91,12 @@ import Slider from "../components/Slider.vue"
 
     #title-1 {
         position: fixed;
-        top: 88vh;
+        top: 91vh;
         z-index: 100;
         color: white;
         transform: rotate(0deg);
         font-size: 3rem;
-        left: 0vw;
+        left: 1vw;
         text-shadow: 3px 3px 3px black;
         letter-spacing: 5px;
     }
@@ -112,7 +112,7 @@ import Slider from "../components/Slider.vue"
         color: white;
         transform: rotate(0deg);
         font-size: 3em;
-        right: 0;
+        right: 1vw;
         top: 1vh;
         text-shadow: 3px 3px 3px black;
         letter-spacing: 5px;

@@ -7,7 +7,6 @@ import Portfolio from "../views/Portfolio.vue";
 import Artwork from "../views/Artwork.vue";
 import ArtworkOverview from "../views/ArtworkOverview.vue"
 import ArtworkStatus from "../views/ArtworkStatus.vue"
-import Enquiry from "../views/Enquiry.vue"
 import ArtworkList from "../views/ArtworkList.vue"
 import EnquiryReview from "../views/EnquiryReview.vue"
 import Contact from "../views/Contact.vue"
@@ -56,11 +55,6 @@ const routes = [
     path: "/artworkstatus",
     name: "ArtworkStatus",
     component: ArtworkStatus
-  },
-  {
-    path: "/enquiry",
-    name: "Enquiry",
-    component: Enquiry
   },
   {
     path: "/artworklist",

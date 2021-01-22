@@ -1,5 +1,8 @@
 <template>
   <div id="enquiry">
+    <div id="image-container">
+      <img :src="url" />
+    </div>
     <div id="form" v-if="display == false">
       <h3>
         <span v-if="this.$store.getters.languageGet"
@@ -92,6 +95,18 @@ export default {
       this.display = !this.display;
     },
   },
+  computed: {
+    url() {
+      if (this.$store.state.artwork[0] == undefined) return "";
+      console.log(this.$store.state.artwork[0].url);
+      return this.$store.state.artwork[0].url;
+    },
+  },
+  mounted() {
+    if (this.$store.state.artwork.length == 0) {
+      this.$store.dispatch("getArtwork");
+    }
+  },
 };
 </script>
 
@@ -102,6 +117,24 @@ export default {
   justify-items: center;
   align-items: start;
   row-gap: 0.5vh;
+  position: relative;
+}
+
+#image-container {
+  width: 100%;
+  min-height: 70vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 1em;
+  box-shadow: 4px 4px 3px grey;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+  }
 }
 
 #form {
@@ -111,12 +144,9 @@ export default {
   align-items: center;
   margin: 0.5em;
   row-gap: 0.5vh;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background: url(../assets/bio_background.jpg);
-  background-size: cover;
-  background-position: center;
   padding: 1em 0 2em 0;
+  position: absolute;
+  top: 0;
 
   h3 {
     width: 90%;
@@ -170,7 +200,8 @@ export default {
     color: black;
     padding-top: 0.5em;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       cursor: pointer;
     }
   }
@@ -178,32 +209,22 @@ export default {
 
 @media only screen and (min-width: 600px) {
   #enquiry {
+    min-height: 75vh;
+  }
+
+  #image-container {
     width: 90%;
-    min-height: 80vh;
-    display: grid;
-    justify-items: center;
-    align-items: start;
-    row-gap: 0.5vh;
+    box-shadow: 6px 6px 3px grey;
+    margin-bottom: 0;
+
   }
 
   #form {
-    width: 100%;
-    min-height: 80vh;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    margin: 0.5em;
-    row-gap: 0.5vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background: url(../assets/bio_background_tablet.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 1em 0 2em 0;
+    padding: 0 0 2em 0;
 
     h3 {
       font-size: 1.5rem;
-      padding-top: 2em;
+      padding: 1em 0 1em 0;
     }
 
     h4 {
@@ -217,6 +238,7 @@ export default {
 
     .input {
       width: 60%;
+      height: 4vh;
     }
 
     #message-input {
@@ -228,7 +250,7 @@ export default {
       width: 20%;
       height: 3vh;
       font-size: 1rem;
-      margin-top: 0.2em;
+      margin-top: 1em;
       padding-top: 0.2em;
     }
   }
@@ -236,26 +258,39 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   #enquiry {
-    width: 32%;
-    min-height: 90vh;
+    width: 100%;
     display: grid;
     justify-items: center;
     align-items: start;
     row-gap: 0.5vh;
+    border: 3px solid white;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background: url(../assets/artwork_background.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  #image-container {
+    width: 35%;
+    margin-bottom: 1em;
+    height: 90vh;
+    margin-top: 1em;
   }
 
   #form {
-    padding: 1.2em 0 2em 0;
+    width: 35%;
+    padding: 0 0 2em 0;
+    margin: 0;
 
     h3 {
-      font-size: 1rem;
+      font-size: 1.2rem;
       padding: 1em 0 0 0;
-      width: 70%;
       margin-top: 1em;
     }
 
     h4 {
-      font-size: 0.8rem;
+      font-size: 1rem;
       margin: 0.2em;
     }
 
@@ -275,7 +310,7 @@ export default {
 
     .button {
       width: 20%;
-      height: 5vh;
+      height: 6vh;
       font-size: 1rem;
       margin-top: 0.2em;
       padding-top: 0.2em;

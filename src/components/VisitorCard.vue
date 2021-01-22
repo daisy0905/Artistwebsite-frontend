@@ -95,6 +95,10 @@ export default {
     grid-template-columns: 15% 70% 15%;
     border-bottom: 1px solid grey;
 
+    &:hover, &:active {
+      cursor: pointer;
+    }
+
     img {
       width: 20px;
       height: 20px;

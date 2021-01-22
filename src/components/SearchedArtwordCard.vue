@@ -70,7 +70,7 @@ export default {
     width: 80%;
     height: 5vh;
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 0.5em;
   }
 
@@ -86,7 +86,7 @@ export default {
     text-align: center;
     background-color: grey;
     color: white;
-    padding: 0.5em;
+    padding: 0.5em 0.8em 0.5em 0.8em;
   }
 }
 

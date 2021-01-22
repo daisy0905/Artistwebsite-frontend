@@ -1,67 +1,75 @@
 <template>
   <div id="status-list">
-    <nav-admin id="nav-en"></nav-admin>
-    <nav-admin-desktop id="nav-admin-desktop"></nav-admin-desktop>
-    <div id="en-ch">
-      <div></div>
-      <h4 id="english" @click="showEnglish">EN</h4>
-      <h4 id="chinese" @click="showChinese">中文</h4>
-      <div></div>
+    <div v-if="login == undefined" id="login-check">
+      <img @click="exit" src="../assets/exit-icon.png" alt="exit icon" />
+      <h3>Sorry, You Have No Authorization To Visiting This Webpage!</h3>
+      <h3>抱歉，您没有权限访问此页面！</h3>
     </div>
-    <div id="container-1">
-      <div class="art-status">
+    <div v-if="login" id="container">
+      <navigation id="nav"></navigation>
+      <nav-desktop id="nav-desktop"></nav-desktop>
+      <div id="en-ch">
         <div></div>
-        <h5>{{ availableNum }}</h5>
-        <h4 id="availableStatus" @click="getAvailable">
-          <span v-if="this.$store.getters.languageGet">在库</span
-          ><span v-else>Available</span>
-        </h4>
-        <div></div>
-      </div>
-      <div class="art-status">
-        <div></div>
-        <h5>{{ onholdNum }}</h5>
-        <h4 id="onHoldStatus" @click="getOnhold">
-          <span v-if="this.$store.getters.languageGet">已预订</span
-          ><span v-else>On hold</span>
-        </h4>
+        <h4 id="english" @click="showEnglish">EN</h4>
+        <h4 id="chinese" @click="showChinese">中文</h4>
         <div></div>
       </div>
-      <div class="art-status">
-        <div></div>
-        <h5>{{ soldNum }}</h5>
-        <h4 id="soldStatus" @click="getSold">
-          <span v-if="this.$store.getters.languageGet">已售</span
-          ><span v-else>Sold</span>
-        </h4>
-        <div></div>
+      <div id="container-1">
+        <div class="art-status">
+          <div></div>
+          <h4>{{ availableNum }}</h4>
+          <h4 id="availableStatus" @click="getAvailable">
+            <span v-if="this.$store.getters.languageGet">在库</span
+            ><span v-else>Available</span>
+          </h4>
+          <div></div>
+        </div>
+        <div class="art-status">
+          <div></div>
+          <h4>{{ onholdNum }}</h4>
+          <h4 id="onHoldStatus" @click="getOnhold">
+            <span v-if="this.$store.getters.languageGet">已预订</span
+            ><span v-else>On hold</span>
+          </h4>
+          <div></div>
+        </div>
+        <div class="art-status">
+          <div></div>
+          <h4>{{ soldNum }}</h4>
+          <h4 id="soldStatus" @click="getSold">
+            <span v-if="this.$store.getters.languageGet">已售</span
+            ><span v-else>Sold</span>
+          </h4>
+          <div></div>
+        </div>
+      </div>
+      <status class="status" :Status="status"></status>
+      <div id="go-to-top">
+        <a href="#status-list">TO TOP</a>
       </div>
     </div>
-    <status class="status" :Status="status"></status>
     <footer-contact></footer-contact>
-    <div id="go-to-top">
-      <a href="#status-list">TO TOP</a>
-    </div>
   </div>
 </template>
 
 <script>
-import NavAdmin from "../components/NavAdmin.vue";
-import NavAdminDesktop from "../components/NavAdminDesktop.vue";
+import Navigation from "../components/Nav.vue";
+import NavDesktop from "../components/NavDesktop.vue";
 import FooterContact from "../components/FooterContact.vue";
 import cookies from "vue-cookies";
-import Status from '../components/Status.vue';
+import Status from "../components/Status.vue";
 
 export default {
   components: {
-    NavAdmin,
-    NavAdminDesktop,
+    Navigation,
+    NavDesktop,
     FooterContact,
     Status,
   },
   data() {
     return {
       status: "available",
+      login: cookies.get("login"),
     };
   },
   props: {
@@ -73,13 +81,13 @@ export default {
     showEnglish: function () {
       cookies.remove("chinese");
       this.$store.commit("updateLanguage", false);
-      document.getElementById("english").style.color = "red";
+      document.getElementById("english").style.color = "#bb9457ff";
       document.getElementById("chinese").style.color = "black";
     },
     showChinese: function () {
       cookies.set("chinese", true);
       this.$store.commit("updateLanguage", true);
-      document.getElementById("chinese").style.color = "red";
+      document.getElementById("chinese").style.color = "#bb9457ff";
       document.getElementById("english").style.color = "black";
     },
     getAvailable: function () {
@@ -99,6 +107,9 @@ export default {
       document.getElementById("availableStatus").style.color = "black";
       document.getElementById("onHoldStatus").style.color = "black";
       document.getElementById("soldStatus").style.color = "#bb9457ff";
+    },
+    exit: function () {
+      this.$router.push("/");
     },
   },
   mounted() {
@@ -134,12 +145,51 @@ export default {
   align-items: left;
 }
 
-#nav-en {
-  height: 8vh;
+#login-check {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  align-content: start;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background: url(../assets/bio_background_mobile.jpg);
+  background-size: cover;
+  background-position: center;
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-top: 1em;
+
+    &:hover, &:active {
+      cursor: pointer;
+    }
+  }
+
+  h3 {
+    width: 90%;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: 10em 0 5em 0;
+  }
+}
+
+#container {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+}
+
+#nav {
+  height: 3em;
   width: 100%;
 }
 
-#nav-admin-desktop {
+#nav-desktop {
   display: none;
 }
 
@@ -177,17 +227,13 @@ export default {
     grid-template-columns: 1fr 1fr 2.5fr 1fr;
     margin-top: 1em;
 
-    h5 {
-      font-weight: bold;
-
-      font-size: 0.8rem;
-      color: #aab8c2;
-    }
-
     h4 {
       font-weight: bold;
-
       font-size: 0.8rem;
+
+      &:hover, &:active {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -233,7 +279,27 @@ export default {
 }
 
 @media only screen and (min-width: 600px) {
-  #nav-admin-desktop {
+  #login-check {
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin-top: 2em;
+    }
+
+    h3 {
+      width: 70%;
+      font-size: 1.5rem;
+      padding: 8em 0 5em 0;
+      line-height: 1.5em;
+    }
+  }
+
+  #nav {
+    height: 4.5em;
+  }
+
+  #nav-desktop {
     display: none;
   }
 
@@ -245,10 +311,6 @@ export default {
 
   #container-1 {
     .art-status {
-      h5 {
-        font-size: 1rem;
-      }
-
       h4 {
         font-size: 1.2rem;
       }
@@ -273,11 +335,20 @@ export default {
 }
 
 @media only screen and (min-width: 1024px) {
-  #nav-en {
+  #login-check {
+
+    h3 {
+      width: 70%;
+      font-size: 1.2rem;
+      padding: 5em 0 5em 0;
+    }
+  }
+
+  #nav {
     display: none;
   }
 
-  #nav-admin-desktop {
+  #nav-desktop {
     width: 100%;
     height: 10vh;
     display: grid;
@@ -286,7 +357,7 @@ export default {
   }
 
   #en-ch {
-    height: 7vh;
+    height: 5em;
     width: 100%;
     display: grid;
     justify-items: center;
@@ -297,7 +368,6 @@ export default {
 
     h4 {
       font-weight: bold;
-
       font-size: 1rem;
     }
   }
@@ -309,6 +379,7 @@ export default {
     column-gap: 0.5em;
     justify-items: center;
     align-items: center;
+    margin-top: 0.5em;
 
     .art-status {
       height: 100%;
@@ -319,13 +390,7 @@ export default {
       grid-template-columns: 1fr 1fr 2.5fr 1fr;
       margin-top: 0;
 
-      h5 {
-        color: white;
-        font-size: 0.8rem;
-      }
-
       h4 {
-        color: white;
         font-size: 1rem;
       }
     }
@@ -333,11 +398,6 @@ export default {
 
   .status {
     min-height: 70vh;
-    width: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: start;
-    align-content: start;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 1em;
   }

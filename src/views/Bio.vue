@@ -1,6 +1,6 @@
 <template>
   <div id="bio">
-    <page-navigation id="nav-en"></page-navigation>
+    <navigation id="nav"></navigation>
     <nav-desktop id="nav-desktop"></nav-desktop>
     <div id="en-ch">
       <div></div>
@@ -44,13 +44,13 @@
 </template>
 
 <script>
-import PageNavigation from "../components/Nav.vue";
+import Navigation from "../components/Nav.vue";
 import NavDesktop from "../components/NavDesktop.vue";
 import FooterSection from "../components/Footer.vue";
 import cookies from "vue-cookies";
 export default {
   components: {
-    PageNavigation,
+    Navigation,
     NavDesktop,
     FooterSection,
   },
@@ -82,12 +82,9 @@ export default {
   align-items: center;
 }
 
-#nav-en {
-  height: 8vh;
+#nav {
+  height: 3em;
   width: 100%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
 }
 
 #nav-desktop {
@@ -95,7 +92,7 @@ export default {
 }
 
 #en-ch {
-  height: 5vh;
+  height: 2em;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -129,38 +126,36 @@ export default {
   padding-bottom: 2em;
 
   #unit-2 {
-    height: 40vh;
+    height: 35vh;
     width: 100%;
     display: grid;
     justify-items: center;
-    align-items: center;
-    margin-top: 4em;
+    align-items: start;
+    margin-top: 2em;
 
     img {
       width: 200px;
-      box-shadow: 8px 8px 2px white;
+      box-shadow: 8px 8px 2px grey;
       opacity: 0.9;
     }
   }
 
   .unit-3 {
-    min-height: 40vh;
+    min-height: 35vh;
     width: 100%;
     display: grid;
     justify-items: center;
     align-items: center;
-    margin-top: 1em;
+    margin-top: 3em;
 
     h2 {
       font-weight: bold;
       font-size: 1.5rem;
-      color: white;
     }
 
     h3 {
       font-size: 1rem;
       margin-top: 0.5em;
-      color: white;
     }
 
     p {
@@ -170,12 +165,15 @@ export default {
       text-align: justify;
       line-height: 1.5em;
       margin: 1em 0 1em 0;
-      color: white;
     }
   }
 }
 
 @media only screen and (min-width: 600px) {
+  #nav {
+    height: 4.5em;
+  }
+
   #bio {
     width: 100%;
     min-height: 30vh;
@@ -188,16 +186,16 @@ export default {
   }
 
   #en-ch {
+    height: 3em;
     h4 {
       font-size: 1.2rem;
     }
   }
 
   #content {
-    min-height: 92vh;
+    min-height: 50vh;
     width: 100%;
-    margin-top: 1em;
-    background: url(../assets/bio_background.jpg);
+    margin-top: 0.8em;
 
     #unit-2 {
       height: 40vh;
@@ -242,7 +240,7 @@ export default {
     align-items: center;
   }
 
-  #nav-en {
+  #nav {
     display: none;
   }
 
@@ -255,7 +253,7 @@ export default {
   }
 
   #en-ch {
-    height: 13vh;
+    height: 5em;
     width: 100%;
     display: grid;
     justify-items: center;
@@ -271,36 +269,20 @@ export default {
   }
 
   #content {
-    height: 100vh;
+    min-height: 30vh;
     margin-top: 0.3em;
     display: grid;
-    grid-template-columns: 0.6fr 1fr;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background: url(../assets/bio_background_desktop.jpg);
-    background-size: cover;
-    background-position: center;
+    align-items: start;
+    grid-template-columns: 1fr 1fr;
 
-    #unit-2 {
-      height: 100%;
-      width: 100%;
-      display: grid;
-      justify-items: center;
+    .unit-2 {
       align-items: start;
-      padding: 3em 0 0 3em;
-
-      img {
-        height: 350px;
-        width: auto;
-        border: 4px solid white;
-        box-shadow: none;
-      }
     }
 
+
     .unit-3 {
-      margin-top: 0;
       width: 100%;
-      padding-top: 1em;
+      padding: 1em 0 6em 0;
       h2 {
         font-size: 1.5rem;
       }
