@@ -54,7 +54,7 @@ export default {
 }
 
 .item {
-  height: 12vh;
+  min-height: 10vh;
   width: 90%;
   display: grid;
   justify-items: left;
@@ -70,13 +70,14 @@ export default {
   }
 
   img {
-    height: 90%;
+    margin: 0.2em 0 0.2em 0;
+    height: auto;
+    width: 85%;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .item {
-    height: 15vh;
     grid-template-columns: 1fr 1fr;
 
     h4 {
@@ -84,16 +85,22 @@ export default {
     }
 
     img {
-      height: 90%;
+      margin: 0.5em 0 0.5em 0;
     }
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .item {
+    min-height: 10vh;
     h4 {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
+
+    img {
+      width: 80%;
+    }
+
   }
 }
 </style>

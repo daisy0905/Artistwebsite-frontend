@@ -106,7 +106,8 @@ export default {
     height: 30px;
     margin-top: 1em;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       cursor: pointer;
     }
   }
@@ -114,7 +115,6 @@ export default {
   h3 {
     width: 90%;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     padding: 10em 0 5em 0;
   }
@@ -147,7 +147,6 @@ export default {
 
   h4 {
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
     margin: 0;
   }
@@ -228,7 +227,6 @@ export default {
 
 @media only screen and (min-width: 600px) {
   #login-check {
-
     img {
       width: 40px;
       height: 40px;
@@ -245,10 +243,6 @@ export default {
 
   #nav {
     height: 4.5em;
-  }
-
-  #nav-desktop {
-    display: none;
   }
 
   #en-ch {
@@ -289,7 +283,6 @@ export default {
   }
 
   #login-check {
-
     h3 {
       width: 70%;
       font-size: 1.2rem;
@@ -322,6 +315,11 @@ export default {
     h4 {
       font-weight: bold;
       font-size: 1rem;
+
+      &:hover,
+      &:active {
+        cursor: pointer;
+      }
     }
   }
 
@@ -331,8 +329,9 @@ export default {
     display: grid;
     justify-items: center;
     align-items: start;
-    row-gap: 1vh;
-    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 45%);
+    grid-auto-rows: minmax(20px, auto);
   }
 
   .upload-form {

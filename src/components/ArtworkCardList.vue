@@ -152,7 +152,6 @@ export default {
 
 @media only screen and (min-width: 600px) {
   .pagination {
-
     h3 {
       font-size: 1.5rem;
     }
@@ -170,12 +169,12 @@ export default {
   }
 
   .pagination {
-
     h3 {
       font-size: 1.2rem;
       padding-top: 0.5em;
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         background-color: lightgrey;
         cursor: pointer;
       }

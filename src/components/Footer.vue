@@ -139,6 +139,11 @@ export default {
     font-size: 0.8rem;
     text-decoration: none;
     color: black;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 
   h4 {

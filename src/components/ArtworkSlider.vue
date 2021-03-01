@@ -120,14 +120,14 @@ export default {
   }
 
   .main-image {
-    height: 50vh;
+    min-height: 50vh;
     width: 100%;
     display: grid;
     justify-items: center;
     align-items: center;
 
     img {
-      height: 100%;
+      height: 50vh;
       width: 100%;
       object-fit: cover;
     }
@@ -161,18 +161,14 @@ export default {
 
 @media only screen and (min-width: 600px) {
   .container {
-    height: 60vh;
     margin-top: 0.5em;
+    align-items: start;
     .slider-icon {
       grid-template-columns: 45% 10% 45%;
 
       .icon {
         font-size: 2.5rem;
       }
-    }
-
-    .main-image {
-      height: 60vh;
     }
 
     .slider-button {
@@ -185,7 +181,8 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   .container {
-    height: 65vh;
+    min-height: 65vh;
+    width: 100%;
 
     .slider-icon {
       grid-template-columns: 45% 10% 45%;
@@ -196,7 +193,13 @@ export default {
     }
 
     .main-image {
+      width: 100%;
       height: 65vh;
+      object-fit: cover;
+
+      img {
+        height: 65vh;
+      }
     }
 
     .slider-button {

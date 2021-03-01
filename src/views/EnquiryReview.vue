@@ -136,6 +136,11 @@ export default {
     font-weight: bold;
     font-size: 0.8rem;
     margin: 0;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 }
 
@@ -214,7 +219,6 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   #login-check {
-
     h3 {
       width: 70%;
       font-size: 1.2rem;

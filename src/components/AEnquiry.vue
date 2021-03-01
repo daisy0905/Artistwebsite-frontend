@@ -95,7 +95,7 @@ export default {
 }
 
 .container-1 {
-  height: 10vh;
+  min-height: 10vh;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -112,18 +112,19 @@ export default {
 
   img {
     height: 90%;
+    width: 85%;
   }
 }
 
 .description {
-  height: 10vh;
+  min-height: 10vh;
   width: 100%;
   display: grid;
   justify-items: center;
   align-items: start;
 
   .unit-1 {
-    height: 3vh;
+    min-height: 3vh;
     width: 100%;
     display: grid;
     justify-items: center;
@@ -199,7 +200,7 @@ export default {
 
 @media only screen and (min-width: 600px) {
   .container-1 {
-    height: 12vh;
+    min-height: 12vh;
   }
 
   .image {
@@ -247,7 +248,7 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   .container-1 {
-    height: 12vh;
+    min-height: 12vh;
   }
 
   .image {

@@ -132,6 +132,11 @@ export default {
   h4 {
     font-weight: bold;
     font-size: 0.8rem;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 }
 

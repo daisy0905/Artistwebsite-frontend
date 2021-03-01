@@ -59,19 +59,19 @@
       <div v-if="nav" class="nav-container">
         <h3 :style="artworkoverview" @click="goToArtworkOverview">
           <span v-if="this.$store.getters.languageGet">作品总览</span
-          ><span v-else>ARTWORK OVERVIEW</span>
+          ><span v-else>ARTWORKS</span>
         </h3>
         <h3 :style="artworkstatus" @click="goToArtworkStatus">
           <span v-if="this.$store.getters.languageGet">作品状态</span
-          ><span v-else>ARTWORK STATUS</span>
+          ><span v-else>STATUS</span>
         </h3>
         <h3 :style="enquiry" @click="goToEnquiry">
           <span v-if="this.$store.getters.languageGet">>留言总览</span
-          ><span v-else>ENQUIRY REVIEW</span>
+          ><span v-else>ENQUIRIES</span>
         </h3>
         <h3 :style="visitors" @click="goToVisitors">
           <span v-if="this.$store.getters.languageGet">访客清单</span
-          ><span v-else>VISITOR LIST</span>
+          ><span v-else>VISITORS</span>
         </h3>
         <h3 class="login-btn" @click="showInput">
           <span v-if="this.$store.getters.languageGet">管理员退出</span

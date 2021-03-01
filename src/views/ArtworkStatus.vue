@@ -163,7 +163,8 @@ export default {
     height: 30px;
     margin-top: 1em;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       cursor: pointer;
     }
   }
@@ -204,9 +205,13 @@ export default {
 
   h4 {
     font-weight: bold;
-
     font-size: 0.8rem;
     margin: 0;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
   }
 }
 
@@ -231,7 +236,8 @@ export default {
       font-weight: bold;
       font-size: 0.8rem;
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         cursor: pointer;
       }
     }
@@ -280,7 +286,6 @@ export default {
 
 @media only screen and (min-width: 600px) {
   #login-check {
-
     img {
       width: 40px;
       height: 40px;
@@ -336,7 +341,6 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   #login-check {
-
     h3 {
       width: 70%;
       font-size: 1.2rem;

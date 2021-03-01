@@ -193,7 +193,7 @@ export default {
 
   #text-container {
     #text-unit-1 {
-      row-gap: 58vh;
+      row-gap: 49vh;
       top: 19vh;
 
       h2 {
@@ -203,7 +203,7 @@ export default {
     }
 
     #text-unit-2 {
-      top: 141vh;
+      top: 123vh;
 
       h2 {
         font-size: 1.8rem;
@@ -251,7 +251,7 @@ export default {
   }
 
   #text-container {
-    width: 100%;
+    width: 90%;
     margin-top: 0.5em;
     display: grid;
     justify-items: center;
@@ -269,7 +269,7 @@ export default {
     }
 
     #text-unit-2 {
-      top: 88vh;
+      top: 89vh;
 
       h2 {
         font-size: 1.5rem;
@@ -279,14 +279,14 @@ export default {
   }
 
   #artwork-container-1 {
-    height: 65vh;
+    width: 90%;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 1em;
     column-gap: 1em;
   }
 
   #artwork-container-2 {
-    height: 65vh;
+    width: 90%;
     grid-template-columns: 25% 50% 25%;
     margin-bottom: 1em;
   }

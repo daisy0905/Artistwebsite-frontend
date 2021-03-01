@@ -146,7 +146,7 @@ export default {
     display: grid;
     justify-items: center;
     align-items: center;
-    margin-top: 3em;
+    margin-top: 4em;
 
     h2 {
       font-weight: bold;
