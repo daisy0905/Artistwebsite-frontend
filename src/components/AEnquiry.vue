@@ -104,7 +104,7 @@ export default {
 }
 
 .image {
-  height: 100%;
+  height: 10vh;
   width: 100%;
   display: grid;
   justify-items: center;
@@ -113,6 +113,7 @@ export default {
   img {
     height: 90%;
     width: 85%;
+    object-fit: cover;
   }
 }
 
